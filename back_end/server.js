@@ -14,9 +14,11 @@ app.get('/', (req, res) => res.send('Welcome homepage'))
 
 const Consultant = require('./routes/Consultant')
 const Client = require('./routes/client')
+const tache = require('./routes/tache')
 // routes in module
 app.use('/Consultant', Consultant(db))
 app.use('/clients', Client(db))
+app.use('/tache', tache(db))
 
 //
 // TODO : il manque les assocations sous lib/modeles
