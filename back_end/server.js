@@ -12,9 +12,9 @@ app.use(bodyParser.urlencoded({ extended: false}))
 app.get('/', (req, res) => res.send('Welcome homepage'))
 //app.get('/index', (req, res) => res.sendFile(`${__dirname}/index.html`))
 
-const Consultant = require('./routes/Consultant')
+const consultant = require('./routes/consultant')
 // routes in module
-app.use('/Consultant', Consultant(db))
+app.use('/consultant', consultant(db))
 
 //
 // TODO : il manque les assocations sous lib/modeles
@@ -22,7 +22,6 @@ app.use('/Consultant', Consultant(db))
 //
 
 // rajouter les routes ici
-
 
 const server = app.listen(3000, function () {
   var host = server.address().address
