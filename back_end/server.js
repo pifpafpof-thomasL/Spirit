@@ -13,8 +13,10 @@ app.get('/', (req, res) => res.send('Welcome homepage'))
 //app.get('/index', (req, res) => res.sendFile(`${__dirname}/index.html`))
 
 const Consultant = require('./routes/Consultant')
+const Client = require('./routes/client')
 // routes in module
 app.use('/Consultant', Consultant(db))
+app.use('/clients', Client(db))
 
 //
 // TODO : il manque les assocations sous lib/modeles
