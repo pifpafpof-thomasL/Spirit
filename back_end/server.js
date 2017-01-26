@@ -10,15 +10,16 @@ app.use(express.static('.'))
 app.use(bodyParser.urlencoded({ extended: false}))
 
 app.get('/', (req, res) => res.send('Welcome homepage'))
-//app.get('/index', (req, res) => res.sendFile(`${__dirname}/index.html`))
 
 const Consultant = require('./routes/Consultant')
 const Client = require('./routes/client')
 const tache = require('./routes/tache')
+const Projet = require('./routes/projet')
 // routes in module
 app.use('/Consultant', Consultant(db))
 app.use('/clients', Client(db))
 app.use('/tache', tache(db))
+app.use('/projets', Projet(db))
 
 //
 // TODO : il manque les assocations sous lib/modeles
