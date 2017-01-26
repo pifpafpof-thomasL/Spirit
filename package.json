@@ -1,0 +1,15 @@
+{
+  "name": "cognac",
+  "version": "1.0.0",
+  "description": "Création d'une application de gestion de projet et de personnel.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.enseeiht.fr:cognac_altran_project/cognac.git"
+  },
+  "author": "",
+  "license": "ISC"
+}
