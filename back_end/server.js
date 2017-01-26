@@ -15,7 +15,7 @@ app.get('/', (req, res) => res.send('Welcome homepage'))
 const Consultant = require('./routes/Consultant')
 app.use('/Consultant', Consultant(db))
 const Projet = require('./routes/projet')
-app.use('/projet', Projet(app, db))
+app.use('/projets', Projet(db))
 
 //
 // TODO : il manque les assocations sous lib/modeles

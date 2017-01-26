@@ -35,8 +35,8 @@ module.exports = (db, viewpath = 'Consultant') => {
       //.then(Consultant => Consultant.setAuthor(req.user))
       .then(Consultant =>
         res.redirect(`${req.baseUrl}/${Consultant.id_consultant}`))
-      .catch(e => res.status(404).
-          send(`Unable to create Consultant ${Consultant.id_consultant}`))
+//      .catch(e => res.status(404).
+//          send(`Unable to create Consultant ${Consultant.id_consultant}`))
   })
 
   return app
