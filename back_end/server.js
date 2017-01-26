@@ -16,7 +16,7 @@ const Consultant = require('./routes/Consultant')
 const Client = require('./routes/client')
 // routes in module
 app.use('/Consultant', Consultant(db))
-app.use('/clients', Client(db))
+app.use('/client', Client(db))
 
 //
 // TODO : il manque les assocations sous lib/modeles
