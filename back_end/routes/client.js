@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 const inspect = require('util').inspect
-module.exports = (db, viewpath = 'client') => {
+module.exports = (db, viewpath = 'clients') => {
 
   //API REST for Client
   // Get all Client
@@ -20,9 +20,9 @@ module.exports = (db, viewpath = 'client') => {
       })
       .then((client) => client ?
         res.status(200).json(client) :
-        res.status(404).send({
-         error:'unknown Client'
-        }))
+        res.status(404).send(
+         'unknown Client'
+        ))
   })
 
   // delete  client
