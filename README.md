@@ -45,6 +45,37 @@ Cookie-Parser
 
 ___
 
+## Guidelines
+
+#### Guidelines fichiers
+
+Dans chaque fichier JS : `'use strict'`
+
+Fichier server.js :
+
+`app.use('/collections', Model(db)) ` => collection au pluriel + Model avec une majuscule
+
+`const Model = require ('./routes/fichier-route')` => Model avec majuscule + fichier_route en minuscules au singulier
+
+#### Guidelines Git
+
+La branche commune est **development**
++ `git checkout development` => On se positionne sur la branche
+
++ `git pull` => Pour se mettre à jour par rapport au dépôt
+
++ `git checkout -b nom_new_branch` => Création d'une nouvelle branche pour travailler sur une fonctionnalité
+
++ `git push -u origin nom_new_branch` => Mettre la branche sur le dépôt cognac (distant)
+
++ Demander à un collègue de vérifier le fonctionnement du code de la branche
+
++ Si OK, mettre à jour **nom_new_branch** avec **development** (et non pas le contraire) : `git checkout nom_new_branch && git merge development`
+
++ Si merge OK : demande de validation fonctionnelle (à Jérôme)
+
++ Si validé : merge request vers **development**
+
 ## Visualisation Du Front-End
 
 Installer Browser Sync
