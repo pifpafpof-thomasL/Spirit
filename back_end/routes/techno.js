@@ -9,7 +9,7 @@ module.exports = (db, viewpath = 'technos') => {
     // list all technos
     app.get('/', (req, res) => {
         db.Techno.findAll()
-            .then(technos => res.status(200).json(technos))
+            .then(techno => res.status(200).json(techno))
             .catch(e => res.status(404).send('db access error'))
     })
 
@@ -17,18 +17,16 @@ module.exports = (db, viewpath = 'technos') => {
     app.get('/:id', (req, res) => {
         db.Techno.findById(req.params.id)
             .then((techno) => techno ?
-                res.tecnhos(200).json(techno) :
+                res.status(200).json(techno) :
                 res.status(404).send('Not Found'))
     })
 
     // create new techno
     app.post('/', (req, res) => {
-    db.Techno.create(req.body)
-        .then(techno => {
-            const id_techno = techno.dataValues.id_techno
-            res.status(201).append('Location', '/' + id_techno).send('created ok')
-        })
-        .catch(e => res.status(404).send('error'))
+        db.Techno.create(req.body)
+            .then(techno =>
+                res.location(`/techno/${techno.dataValues.id_Techno}`).sendStatus(201))
+            .catch(e => res.status(404).send('error'))
     })
 
     // delete a techno
