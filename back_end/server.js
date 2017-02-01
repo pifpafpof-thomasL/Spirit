@@ -11,17 +11,18 @@ app.use(bodyParser.urlencoded({ extended: false}))
 
 app.get('/', (req, res) => res.send('Welcome homepage'))
 
-const consultant = require('./routes/consultant')
+const Consultant = require('./routes/consultant')
 const Client = require('./routes/client')
-const tache = require('./routes/tache')
+const Tache = require('./routes/tache')
 const Projet = require('./routes/projet')
+const Techno = require('./routes/techno')
 // routes in module
 
-app.use('/client', Client(db))
-app.use('/tache', tache(db))
+app.use('/clients', Client(db))
+app.use('/taches', Tache(db))
 app.use('/projets', Projet(db))
-app.use('/consultant', consultant(db))
-
+app.use('/consultants', Consultant(db))
+app.use('/technos', Techno(db))
 
 
 
