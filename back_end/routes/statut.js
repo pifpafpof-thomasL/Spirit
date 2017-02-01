@@ -32,14 +32,6 @@ module.exports = (db, viewpath = 'Statut') => {
 		})
 	})
 
-	// update a statut
-	app.put('/:id', (req, res) => {
-		db.Statut.findById(req.params.id)
-		.then(statut => statut.update(req.body))
-		.then(done => res.sendStatus(200))
-		.catch(error => res.sendStatus(404))
-	})
-
 	// delete a statut
 	app.delete('/:id', (req, res) => {
 		db.Statut.findById(req.params.id)
@@ -47,7 +39,14 @@ module.exports = (db, viewpath = 'Statut') => {
 		.then(done => res.sendStatus(200))
 		.catch(error => res.sendStatus(404))
 	})
-
+	
+	// update a statut
+	app.put('/:id', (req, res) => {
+		db.Statut.findById(req.params.id)
+		.then(statut => statut.update(req.body))
+		.then(done => res.sendStatus(200))
+		.catch(error => res.sendStatus(404))
+	})
 
 	return app
 }

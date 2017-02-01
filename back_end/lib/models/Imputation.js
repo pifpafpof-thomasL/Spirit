@@ -2,10 +2,15 @@
 
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('Imputation', {
-    id_Consultant: {
+    id_Imputation: {
       type: DataTypes.INTEGER(10),
       allowNull: false,
       primaryKey: true,
+      autoIncrement: true
+    },
+    id_Consultant: {
+      type: DataTypes.INTEGER(10),
+      allowNull: false,
       references: {
         model: 'Consultant',
         key: 'id_consultant'
@@ -14,7 +19,6 @@ module.exports = function(sequelize, DataTypes) {
     id_Tache: {
       type: DataTypes.INTEGER(10),
       allowNull: false,
-      primaryKey: true,
       references: {
         model: 'Tache',
         key: 'id_Tache'

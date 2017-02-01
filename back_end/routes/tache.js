@@ -43,7 +43,7 @@ module.exports = (db, viewpath = 'Tache') => {
   // update a task
   app.put('/:id', (req, res) => {
     db.Tache.findById(req.params.id)
-    .then( task => task.update(req.body))
+    .then(task => task.update(req.body))
     .then(done => res.sendStatus(200))
     .catch(error => res.sendStatus(404))
   })
