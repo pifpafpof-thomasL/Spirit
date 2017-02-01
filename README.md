@@ -87,3 +87,19 @@ Dans le treminal : positionnez vous sur le dossier front_end et entrez la comman
 > `browser-sync start --server --files "*.html, css/*.css, js/*.js"`
 
 Cela va ouvrir une fenêtre dans votre navigateur et tous les changements que vous effectuez sur les fichers html, css et js en temps réel
+
+## Product Backlog
+
+v1 app standalone
+
+- CRUD consultants et projets
+- fenetre liste consultants 
+  - trier et filtrer dynamiquement
+  - infos principales consultant
+  - boutons ajout, edit, del
+- idem projets
+- affecter consultant à un projet
+  - ergonomie (période d'affectation, portion de temps affecté - ex 10% 2j / sem)
+  - jours ouvrés
+  - possibilité de rajouter des jours sabbatiques
+- vision sur le plan de charge
