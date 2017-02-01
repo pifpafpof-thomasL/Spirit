@@ -15,6 +15,8 @@ const consultant = require('./routes/consultant')
 const Client = require('./routes/client')
 const tache = require('./routes/tache')
 const Projet = require('./routes/projet')
+
+const statut = require('./routes/statut')
 // routes in module
 
 app.use('/client', Client(db))
@@ -22,7 +24,7 @@ app.use('/tache', tache(db))
 app.use('/projets', Projet(db))
 app.use('/consultant', consultant(db))
 
-
+app.use('/statut', statut(db))
 
 
 // routes in module
