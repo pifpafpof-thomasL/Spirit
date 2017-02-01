@@ -7,7 +7,7 @@ module.exports = (db, viewpath = 'client') => {
   // Get all Client
   app.get('/', (req, res) => {
     db.Client.findAll({})
-    .then((clients) => res.status(200).res.json(clients))
+    .then((clients) => res.status(200).json(clients))
     .catch(e => res.status(404).send('acces error'))
   })
 
