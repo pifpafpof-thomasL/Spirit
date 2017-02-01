@@ -13,25 +13,25 @@ chai.use(chaiHttp)
 // TEST DATAS
 const projet_data_json = {
    "Nom":"projetName",
-   "DateDebut":"2009-10-04",
-   "DateFin":"2011-10-04",
+   "DateDebut":"2009-10-04T00:00:00.000Z",
+   "DateFin":"2011-10-04T00:00:00.000Z",
    "Adm":12,
-   "id_Client":2
+   "id_Client":1
 }
 
 const projet2_data_json = {
    "Nom":"AutreNom",
-   "DateDebut":"2009-10-04",
-   "DateFin":"2011-10-04",
+   "DateDebut":"2009-10-05",
+   "DateFin":"2011-10-05",
    "Adm":12,
-   "id_Client":2
+   "id_Client":1
 }
 
 
 describe('projets CRUD routes', function() {
-// id creation and used in update/delete
-// initialized in the add test
-let location_new_projet= ''
+   // global var initialized in the add test
+   // and used in update and delete tests
+   let location_new_projet= ''
 
    it('get collection silently', function(done) {
       chai.request(URL)
@@ -47,7 +47,6 @@ let location_new_projet= ''
       .post('/')
       .send(projet_data_json)
       .end(function (err, res) {
-      console.log(inspect(res.headers))
          expect(res.headers).to.have.property('location')
          expect(res.headers.location).to.match(/^\/[0-9]+$/)
          expect(res).to.have.status(201)
@@ -60,7 +59,8 @@ let location_new_projet= ''
       chai.request(URL)
       .get(location_new_projet)
       .end(function(err, res) {
-         expect(res).to.be.false
+         expect(res).to.have.status(200)
+         expect(res.body).to.include(projet_data_json)
          done()
       })
    })
@@ -81,6 +81,16 @@ let location_new_projet= ''
       .send(projet2_data_json)
       .end(function(err, res) {
          expect(res).to.have.status(404)
+         done()
+      })
+   })
+
+   it('delete an existing projet', function(done) {
+      chai.request(URL)
+      .delete(location_new_projet)
+      .end(function(err, res) {
+         expect(res).to.have.status(200)
+         done()
       })
    })
 
