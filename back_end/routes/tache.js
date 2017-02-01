@@ -1,6 +1,11 @@
+'use strict'
+
+// TODO : vérifier que id_projet et id_TacheParent existent !!
+
 const express = require('express')
 const app = express()
-const inspect = require('util').inspect
+//const inspect = require('util').inspect
+
 module.exports = (db, viewpath = 'Tache') => {
 
   // list all tasks
@@ -13,7 +18,7 @@ module.exports = (db, viewpath = 'Tache') => {
   // find one particular task
   app.get('/:id', (req, res) => {
     db.Tache.findById(req.params.id)
-    .then((task) => task ?
+    .then(task => task ?
       res.status(200).json(task) :
       res.sendStatus(404))
     .catch(error => res.send('An error has occured'))
@@ -22,14 +27,8 @@ module.exports = (db, viewpath = 'Tache') => {
   // create a new task
   app.post('/', (req, res) => {
     db.Tache.create(req.body)
-    .then(task => res.location(`/tache/${req.body.id_Tache}`).sendStatus(201))
-    .catch(error => {
-      // Works but does 2 requests to the db to verify
-      if (db.Tache.findById(req.body.id_Tache)) {
-        return res.status(409).send('This task already exists')
-      }
-      res.sendStatus(404)
-    })
+    .then(task => res.location(`/tache/${task.dataValues.id_Tache}`).sendStatus(201))
+    .catch(error => res.sendStatus(404))
   })
 
   // delete a task

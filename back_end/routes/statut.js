@@ -1,3 +1,5 @@
+'use strict'
+
 const express = require('express')
 const app = express()
 
@@ -22,14 +24,8 @@ module.exports = (db, viewpath = 'Statut') => {
 	// create new statut
 	app.post('/', (req, res) => {
 		db.Statut.create(req.body)
-		.then(statut => res.location(`/statut/${req.body.id_Statut}`).sendStatus(201))
-		.catch(error => {
-			// Works but does 2 requests to the db to verify
-      if (db.Statut.findById(req.body.id_Statut)) {
-        return res.status(409).send('This statut already exists')
-      }
-      res.sendStatus(404)
-		})
+		.then(statut => res.location(`/statut/${statut.dataValues.id_Statut}`).sendStatus(201))
+		.catch(error => res.sendStatus(404))
 	})
 
 	// delete a statut
@@ -39,7 +35,7 @@ module.exports = (db, viewpath = 'Statut') => {
 		.then(done => res.sendStatus(200))
 		.catch(error => res.sendStatus(404))
 	})
-	
+
 	// update a statut
 	app.put('/:id', (req, res) => {
 		db.Statut.findById(req.params.id)
