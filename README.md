@@ -68,7 +68,7 @@ La branche commune est **development**
 
 + `git push -u origin nom_new_branch` => Mettre la branche sur le dépôt cognac (distant)
 
-+ Demander à un collègue de vérifier le fonctionnement du code de la branche
++ Demander à un colègue de vérifier le fonctionnement du code de la branche
 
 + Si OK, mettre à jour nom_new_branch avec development (et non pas le contraire) : `git checkout nom_new_branch && git merge development`
 
