@@ -15,12 +15,14 @@ const consultant = require('./routes/consultant')
 const Client = require('./routes/client')
 const tache = require('./routes/tache')
 const Projet = require('./routes/projet')
+const Imputation = require('./routes/imputation')
 // routes in module
 
 app.use('/client', Client(db))
 app.use('/tache', tache(db))
 app.use('/projets', Projet(db))
 app.use('/consultant', consultant(db))
+app.use('/imputations', Imputation(db))
 
 
 
