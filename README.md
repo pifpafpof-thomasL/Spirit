@@ -60,6 +60,9 @@ Fichier server.js :
 #### Guidelines Git
 
 La branche commune est **development**
+
+###### créer une novuelle branche de travail à partir de development
+
 + `git checkout development` => On se positionne sur la branche
 
 + `git pull` => Pour se mettre à jour par rapport au dépôt
@@ -68,9 +71,15 @@ La branche commune est **development**
 
 + `git push -u origin nom_new_branch` => Mettre la branche sur le dépôt cognac (distant)
 
+
+
+###### Pour 1ère validation
+
 + Demander à un collègue de vérifier le fonctionnement du code de la branche
 
-+ Si OK, mettre à jour **nom_new_branch** avec **development** (et non pas le contraire) : `git checkout nom_new_branch && git merge development`
++ Si OK, mettre à jour **nom_new_branch** avec **development** (et non pas le contraire) : 
+  - `git checkout development && git pull` (mettre à jour development au cas ou des push ont été fait depuis)
+  - `git checkout nom_new_branch && git merge development` (intégrer development à votre vranche de travail)
 
 + Si merge OK : demande de validation fonctionnelle (à Jérôme)
 
