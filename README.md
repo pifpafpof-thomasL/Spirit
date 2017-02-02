@@ -61,7 +61,7 @@ Fichier server.js :
 
 La branche commune est **development**
 
-###### créer une novuelle branche de travail à partir de development
+###### créer une nouvelle branche de travail à partir de development
 
 + `git checkout development` => On se positionne sur la branche
 
@@ -72,8 +72,7 @@ La branche commune est **development**
 + `git push -u origin nom_new_branch` => Mettre la branche sur le dépôt cognac (distant)
 
 
-
-###### Pour 1ère validation
+###### Pour validation
 
 + Demander à un collègue de vérifier le fonctionnement du code de la branche
 
