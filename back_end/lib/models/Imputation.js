@@ -2,7 +2,7 @@
 
 module.exports = function(sequelize, DataTypes) {
    return sequelize.define('Imputation', {
-      id_Imputation: {
+      id_imputation: {
          type: DataTypes.INTEGER(10),
          allowNull: false,
          primaryKey: true,
