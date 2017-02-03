@@ -31,8 +31,8 @@ module.exports = (db, viewpath = 'imputation') => {
    app.post('/', (req, res) => {
       db.Imputation.create(req.body)
       .then( imputation => {
-         const id_imputation = imputation.dataValues.id_imputation
-         res.status(201).append('Location', '/' + id_imputation).send('created ok')
+         const id_Imputation = imputation.dataValues.id_Imputation
+         res.status(201).append('Location', '/' + id_Imputation).send('created ok')
       })
       .catch( e => {
          console.log(req.body)
@@ -42,10 +42,14 @@ module.exports = (db, viewpath = 'imputation') => {
    })
 
    app.put('/:id', (req, res) => {
+      console.log('PARAMS : ', inspect(req.params))
       db.Imputation.findById(req.params.id)
-      .then( imputation => imputation.update(req.body) )
+      .then( imputation => {
+         console.log('REQ.BODY', inspect(req.body))
+         imputation.update(req.body) 
+      })
       .then( res.status(204).send('update ok') )
-      .catch( e => res.status(404).send('error') )
+      .catch( e => res.status(404) )
    })
 
    return app

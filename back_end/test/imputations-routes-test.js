@@ -12,19 +12,19 @@ chai.use(chaiHttp)
 
 //TEST DATAS
 const imputation_data_json = {
-   "Nom":"imputationName",
    "id_Consultant":2,
    "id_Tache":42,
+   "Pourcentage":90,
    "DateDebut":"2009-10-04T00:00:00.000Z",
-   "DateFin":"2011-10-04T00:00:00.000Z"
+   "DateFin":"2011-10-04T00:00:00.000Z",
 }
 
 const imputation2_data_json = {
-   "Nom":"new_imputationName",
    "id_Consultant":2,
    "id_Tache":42,
-   "DateDebut":"2009-10-14",
-   "DateFin":"2011-10-14"
+   "Pourcentage":30,
+   "DateDebut":"2009-10-04",
+   "DateFin":"2011-10-04",
 }
 
 
