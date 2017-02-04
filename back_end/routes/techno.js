@@ -25,7 +25,7 @@ module.exports = (db, viewpath = 'technos') => {
     app.post('/', (req, res) => {
         db.Techno.create(req.body)
             .then(techno =>
-                res.location(`/techno/${techno.dataValues.id_Techno}`).sendStatus(201))
+                res.location(`/technos/${techno.dataValues.id_Techno}`).sendStatus(201))
             .catch(e => res.status(404).send('error'))
     })
 
@@ -33,7 +33,7 @@ module.exports = (db, viewpath = 'technos') => {
     app.delete('/:id', (req, res) => {
         db.Techno.findById(req.params.id)
             .then(techno => techno.destroy())
-            .then(done => res.sendStatus(200))
+            .then(done => res.sendStatus(204))
             .catch(error => res.sendStatus(404))
     })
 
@@ -41,7 +41,7 @@ module.exports = (db, viewpath = 'technos') => {
     app.put('/:id', (req, res) => {
         db.Techno.findById(req.params.id)
             .then(techno => techno.update(req.body))
-            .then(done => res.sendStatus(200))
+            .then(done => res.sendStatus(204))
             .catch(error => res.sendStatus(404))
     })
 
