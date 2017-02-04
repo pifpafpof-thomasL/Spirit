@@ -1,4 +1,6 @@
 // server.js
+'use strict'
+
 const express = require('express')
 const app = express()
 const db = require(`${__dirname}/lib/models/index.js`)
@@ -16,6 +18,9 @@ const Client = require('./routes/client')
 const Tache = require('./routes/tache')
 const Projet = require('./routes/projet')
 const Techno = require('./routes/techno')
+const Statut = require('./routes/statut')
+const Affectation = require('./routes/affectation')
+
 // routes in module
 
 app.use('/clients', Client(db))
@@ -23,7 +28,8 @@ app.use('/taches', Tache(db))
 app.use('/projets', Projet(db))
 app.use('/consultants', Consultant(db))
 app.use('/technos', Techno(db))
-
+app.use('/statuts', Statut(db))
+app.use('/affectations', Affectation(db))
 
 
 // routes in module
