@@ -24,24 +24,9 @@ module.exports = (db, viewpath = 'Affectation') => {
 		.catch(error => res.send('Random text to signal error'))
 	})
 
-	// Verify if consultant and projet exist in order to affect them
-	let verifyForeignKeysExist = function (model, id_model) {
-		return db.model.findById(id_model)
-		.then(model => {
-			if (!model){
-				throw error
-			}
-			return true
-		})
-		.catch(error => res.status(409).send(`This ${model} does not exist`))
-	}
 
 	// create a new affectation
 	app.post('/', (req, res) => {
-		// console.log(req.body)
-		// verifyForeignKeysExist(Consultant, id_consultant)
-		// .then(consultantOk => verifyForeignKeysExist(Projet, id_projet))
-		// .then(projetOk => )
 		db.Affectation.create(req.body)
 		.then(affectation => res.location(`/affectations/${affectation.dataValues.id_Affectation}`).sendStatus(201))
 		.catch(error => res.sendStatus(404))
