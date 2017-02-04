@@ -43,7 +43,7 @@ module.exports = (db, viewpath = 'Affectation') => {
 		// .then(consultantOk => verifyForeignKeysExist(Projet, id_projet))
 		// .then(projetOk => )
 		db.Affectation.create(req.body)
-		.then(affectation => res.location(`/affectation/${affectation.dataValues.id_Affectation}`).sendStatus(201))
+		.then(affectation => res.location(`/affectations/${affectation.dataValues.id_Affectation}`).sendStatus(201))
 		.catch(error => res.sendStatus(404))
 	})
 
@@ -51,7 +51,7 @@ module.exports = (db, viewpath = 'Affectation') => {
 	app.delete('/:id', (req, res) => {
 		db.Affectation.findById(req.params.id)
 		.then(affectation => affectation.destroy())
-		.then(done => res.sendStatus(200))
+		.then(done => res.sendStatus(204))
 		.catch(error => res.sendStatus(404))
 	})
 
@@ -59,7 +59,7 @@ module.exports = (db, viewpath = 'Affectation') => {
 	app.put('/:id', (req, res) => {
 		db.Affectation.findById(req.params.id)
 		.then(affectation => affectation.update(req.body))
-		.then(done => res.sendStatus(200))
+		.then(done => res.sendStatus(204))
 		.catch(error => res.sendStatus(404))
 	})
 
