@@ -25,7 +25,7 @@ module.exports = (db, viewpath = 'clients') => {
   app.post('/', (req, res) => {
     db.Client.create(req.body)
       .then(client =>
-        res.location(`/client/${client.dataValues.id_Client}`).sendStatus(201))
+        res.location(`/clients/${client.dataValues.id_Client}`).sendStatus(201))
       .catch(e => res.status(404).send('error'))
   })
 
@@ -36,7 +36,7 @@ module.exports = (db, viewpath = 'clients') => {
     db.Client.findById(req.params.id)
       .then((client) =>
         client.destroy())
-      .then(done => res.sendStatus(200))
+      .then(done => res.sendStatus(204))
       .catch(error => res.sendStatus(404))
   })
 
@@ -45,7 +45,7 @@ module.exports = (db, viewpath = 'clients') => {
     db.Client.findById(req.params.id)
       .then(client =>
         client.update(req.body))
-      .then(done => res.sendStatus(200))
+      .then(done => res.sendStatus(204))
       .catch(error => res.sendStatus(404))
   })
 
