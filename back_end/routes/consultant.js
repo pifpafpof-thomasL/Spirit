@@ -48,7 +48,7 @@ module.exports = (db, viewpath = 'Consultant') => {
   app.put('/:id', (req, res) => {
     db.Consultant.findById(req.params.id)
       .then( Consultant => Consultant.update(req.body) )
-      .then( res.status(204).send('update ok') )
+      .then( done => res.status(204).send('update ok') )
       .catch( e => res.status(404).send('update error') )
   });
 
