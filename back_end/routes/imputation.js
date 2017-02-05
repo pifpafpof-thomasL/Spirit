@@ -31,25 +31,17 @@ module.exports = (db, viewpath = 'imputation') => {
    app.post('/', (req, res) => {
       db.Imputation.create(req.body)
       .then( imputation => {
-         const id_imputation = imputation.dataValues.id_imputation
+         const id_imputation = imputation.dataValues.id_Imputation
          res.status(201).append('Location', '/' + id_imputation).send('created ok')
       })
-      .catch( e => {
-         console.log(req.body)
-         console.log(e.message)
-         res.status(404).send('error') 
-      })
+      .catch( e => { res.status(404).send('error') })
    })
 
    app.put('/:id', (req, res) => {
-      console.log('PARAMS : ', inspect(req.params))
       db.Imputation.findById(req.params.id)
-      .then( imputation => {
-         console.log('result : ', inspect(imputation))
-         imputation.update(req.body) 
-      })
-      .then( res.status(204).send('update ok') )
-      .catch( e => res.status(404) )
+      .then( (imputation) => imputation.update(req.body) )
+      .then( done => res.status(204).send('update ok') )
+      .catch( e => res.status(404).send('error') )
    })
 
    return app
