@@ -3,6 +3,8 @@
 const express = require('express')
 const app = express()
 
+const inspect = require('util').inspect
+
 //const inspect = require('util').inspect
 
 module.exports = (db, viewpath = 'projets') => {
@@ -32,16 +34,19 @@ module.exports = (db, viewpath = 'projets') => {
       db.Projet.create(req.body)
       .then( projet => {
          const id_projet = projet.dataValues.id_projet
-         res.status(201).append('Location', '/' + id_projet).send('created ok')
+         res.append('Location', '/' + id_projet).status(201).send('created ok')
       })
-      .catch( e => res.status(404).send('error') )
+      .catch( e => {
+         console.log(inspect(e.message))
+         res.status(404).send('error') 
+      })
    })
 
    app.put('/:id', (req, res) => {
       db.Projet.findById(req.params.id)
       .then( projet => projet.update(req.body) )
-      .then( res.status(204).send('update ok') )
-      .catch( e => res.status(404).send('error') )
+      .then( () => res.status(204).send('update ok') )
+      .catch( e => res.status(404).send() )
    })
 
    return app
