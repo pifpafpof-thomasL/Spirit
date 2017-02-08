@@ -8,10 +8,15 @@ const bodyParser = require('body-parser')
 
 app.use(bodyParser.json())
 app.use(express.static('.'))
+app.use(express.static('./public'));
 
 app.use(bodyParser.urlencoded({ extended: false}))
 
-app.get('/', (req, res) => res.send('Welcome homepage'))
+// app.get('/', (req, res) => res.send('Welcome homepage'))
+app.get('/', function (req, res) {
+	res.sendFile(path.join(__dirname + '/index.html'));
+})
+
 
 const Consultant = require('./routes/consultant')
 const Client = require('./routes/client')

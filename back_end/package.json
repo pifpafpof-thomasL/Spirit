@@ -4,6 +4,8 @@
   "description": "Création d'une application de gestion de projet et de personnel.",
   "main": "server.js",
   "scripts": {
+    "build": "./node_modules/.bin/browserify client.js -o ./public/js/app.js",
+    "watch": "./node_modules/.bin/watchify client.js -o ./public/js/app.js -v",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -14,13 +16,19 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.16.0",
+    "browserify": "^14.0.0",
     "express": "^4.14.0",
     "mysql": "^2.13.0",
-    "sequelize": "^3.30.0"
+    "object-inspect": "^1.2.1",
+    "sequelize": "^3.30.0",
+    "socket.io": "^1.7.2",
+    "watchify": "^3.9.0"
   },
   "devDependencies": {
     "chai": "^3.5.0",
     "chai-http": "^3.0.0",
-    "mocha": "^3.2.0"
+    "handlebars": "^4.0.6",
+    "mocha": "^3.2.0",
+    "pubsub": "git+ssh://git@gitlab.enseeiht.fr:tlecheva/pubsub.git"
   }
 }

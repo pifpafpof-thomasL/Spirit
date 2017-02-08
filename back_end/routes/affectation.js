@@ -28,7 +28,9 @@ module.exports = (db, viewpath = 'Affectation') => {
 	// create a new affectation
 	app.post('/', (req, res) => {
 		db.Affectation.create(req.body)
-		.then(affectation => res.location(`/affectations/${affectation.dataValues.id_Affectation}`).sendStatus(201))
+		.then(affectation => 
+			res.location(`${req.baseUrl}/${affectation.dataValues.id_Affectation}`)
+			.sendStatus(201))
 		.catch(error => res.sendStatus(404))
 	})
 
