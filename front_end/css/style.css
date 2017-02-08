@@ -83,3 +83,10 @@
     left: 1369px !important;
     margin-top: 64px;
 }
+
+
+/* New Version Based on Materializecss.com */
+
+.search-place {
+    width: 150px;
+}
