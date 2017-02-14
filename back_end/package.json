@@ -16,19 +16,19 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.16.0",
-    "browserify": "^14.0.0",
     "express": "^4.14.0",
     "mysql": "^2.13.0",
     "object-inspect": "^1.2.1",
     "sequelize": "^3.30.0",
-    "socket.io": "^1.7.2",
-    "watchify": "^3.9.0"
+    "socket.io": "^1.7.2"
   },
   "devDependencies": {
+    "browserify": "^14.1.0",
     "chai": "^3.5.0",
     "chai-http": "^3.0.0",
     "handlebars": "^4.0.6",
     "mocha": "^3.2.0",
-    "pubsub": "git+ssh://git@gitlab.enseeiht.fr:tlecheva/pubsub.git"
+    "pubsub": "git+ssh://git@gitlab.enseeiht.fr:tlecheva/pubsub.git",
+    "watchify": "^3.9.0"
   }
 }
