@@ -6,13 +6,13 @@ const lines_compiled = handlebars.compile(user_template.list);
 const line_compiled = handlebars.compile(user_template.line);
 
 class MyView {
-	constructor(elementId, events) {
+	constructor(elementId, bus) {
 		const self = this
 
-		events.subscribe('reset', self.render.bind(self))
-		events.subscribe('add', self.add.bind(self))
-		events.subscribe('delete', self.delete.bind(self))
-		events.subscribe('update', self.update.bind(self))
+		bus.subscribe('reset', self.render.bind(self))
+		bus.subscribe('add', self.add.bind(self))
+		bus.subscribe('delete', self.delete.bind(self))
+		bus.subscribe('update', self.update.bind(self))
 
 		document.addEventListener("DOMContentLoaded", 
 			x => {
@@ -32,8 +32,8 @@ class MyView {
 
 
 class MycountView extends MyView {
-	constructor(elementId, events) {
-		super(elementId, events)
+	constructor(elementId, bus) {
+		super(elementId, bus)
 		this.count = 0
 	}
 
@@ -65,8 +65,8 @@ class MycountView extends MyView {
 }
 
 class MylistView extends MyView {
-	constructor(elementId, events) {
-		super(elementId, events)
+	constructor(elementId, bus) {
+		super(elementId, bus)
 	}
 
 	render(store) {

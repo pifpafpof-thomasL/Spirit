@@ -1,55 +1,13 @@
+'use strict'
+
 const inspect = require('object-inspect')
-const events = require('pubsub')
-
-function Store() {
-	this.state = {}
-}
-
-Store.prototype.set = function (records) {
-	records.forEach(record => {
-		this.state[record['_id']] = record
-	})
-	events.publish('reset', this)
-
-	return this
-}
-
-Store.prototype.values = function () {
-	return Object.keys(this.state).map(key => this.state[key])
-}
-
-Store.prototype.getCount = function () {
-	return this.values().length
-}
-
-
-Store.prototype.deleteUser = function (_id) {
-	delete this.state[_id]
-}
-
-Store.prototype.get_user = function (_id) {
-	return this.state[_id]
-}
-
-Store.prototype.addUser = function (_id, payload) {
-	let firstname = payload['firstname']
-	let lastname = payload['lastname']
-	this.state[_id] = { _id, firstname, lastname }
-	return _id
-}
-
-Store.prototype.updateUser = function (_id, payload) {
-	let firstname = payload['firstname']
-	let lastname = payload['lastname']
-	this.state[_id] = { _id, firstname, lastname }
-	return _id
-}
-
-var store = new Store()
+let events = require('pubsub')
+const Store = require('./lib/store')
+let store = new Store(events)
 
 const Views = require('./views/view.js')
-var countComposant = new Views.Count('count', events)
-var listComposant = new Views.List('myUserList', events)
+let countComposant = new Views.Count('count', events)
+let listComposant = new Views.List('myUserList', events)
 
 window.addEventListener('haschanged', () => {
 	console.log("Location hash()", windows.location.hash())
@@ -155,6 +113,15 @@ function edit_user(_id) {
 	form.lastname.value = user.lastname;
 }
 
+function load_users() {
+	fetch('consultants')
+      .then(res => res.json())
+		.then(users => store.set(users))
+		.catch(function (error) {
+			console.log('load_users(): problem with your code? ' + error.message);
+		})
+}
+
 document.addEventListener("DOMContentLoaded", function (event) {
 	load_users();
 	var myForm = document.getElementById('myForm')
@@ -164,11 +131,3 @@ document.addEventListener("DOMContentLoaded", function (event) {
 	}
 })
 
-function load_users() {
-	fetch('consultants')
-      .then(res => res.json())
-		.then(users => store.set(users))
-		.catch(function (error) {
-			console.log('load_users(): problem with your code? ' + error.message);
-		})
-}
