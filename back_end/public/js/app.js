@@ -117,7 +117,7 @@ function edit_user(_id) {
 function load_users() {
 	fetch('consultants')
       .then(res => res.json())
-		.then(users => store.set(users))
+		.then(consultants => store.set(consultants))
 		.catch(function (error) {
 			console.log('load_users(): problem with your code? ' + error.message);
 		})
@@ -136,6 +136,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
 },{"./lib/store":2,"./views/view.js":54,"object-inspect":46,"pubsub":49}],2:[function(require,module,exports){
 'use strict'
 
+const inspect = require('util').inspect
+
 function Store(bus) {
 	this.state = {}
    this.bus = bus
@@ -143,7 +145,7 @@ function Store(bus) {
 
 Store.prototype.set = function (records) {
 	records.forEach(record => {
-		this.state[record['_id']] = record
+		this.state[record['id_consultant']] = record
 	})
 	this.bus.publish('reset', this)
 
@@ -158,32 +160,31 @@ Store.prototype.getCount = function () {
 	return this.values().length
 }
 
-
-Store.prototype.deleteUser = function (_id) {
-	delete this.state[_id]
+Store.prototype.deleteUser = function (id_consultant) {
+	delete this.state[id_consultant]
 }
 
-Store.prototype.get_user = function (_id) {
-	return this.state[_id]
+Store.prototype.get_user = function (id_consultant) {
+	return this.state[id_consultant]
 }
 
-Store.prototype.addUser = function (_id, payload) {
+Store.prototype.addUser = function (id_consultant, payload) {
 	let firstname = payload['firstname']
 	let lastname = payload['lastname']
-	this.state[_id] = { _id, firstname, lastname }
-	return _id
+	this.state[id_consultant] = { id_consultant, firstname, lastname }
+	return id_consultant
 }
 
-Store.prototype.updateUser = function (_id, payload) {
+Store.prototype.updateUser = function (id_consultant, payload) {
 	let firstname = payload['firstname']
 	let lastname = payload['lastname']
-	this.state[_id] = { _id, firstname, lastname }
-	return _id
+	this.state[id_consultant] = { id_consultant, firstname, lastname }
+	return id_consultant
 }
 
 module.exports = Store
 
-},{}],3:[function(require,module,exports){
+},{"util":52}],3:[function(require,module,exports){
 (function (process,__filename){
 /** vim: et:ts=4:sw=4:sts=4
  * @license amdefine 1.0.1 Copyright (c) 2011-2016, The Dojo Foundation All Rights Reserved.
@@ -9400,11 +9401,11 @@ function hasOwnProperty(obj, prop) {
 
 const user_line_template = `
 <tr>
-	<td style='display:none;'>{{_id}}</td>
-	<td>{{firstname}}</td>
-	<td>{{lastname}}</td>
-	<td><button data-user-edit={{_id}}>Edit</button></td>
-	<td><button data-user-delete={{_id}}>Remove</button></td>
+	<td style='display:none;'>{{id_consultant}}</td>
+	<td>{{Prenom}}</td>
+	<td>{{Nom}}</td>
+	<td><button data-user-edit={{id_consultant}}>Edit</button></td>
+	<td><button data-user-delete={{id_consultant}}>Remove</button></td>
 </tr>`
 
 const users_list_template = `
@@ -9418,7 +9419,7 @@ const users_list_template = `
   </thead>
   <tbody>
   	{{#each users}}
-	${user_line_template}
+	   ${user_line_template}
 	{{/each}}
   </tbody>
 </table>`

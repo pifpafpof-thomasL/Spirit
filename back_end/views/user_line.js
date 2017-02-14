@@ -2,11 +2,11 @@
 
 const user_line_template = `
 <tr>
-	<td style='display:none;'>{{_id}}</td>
-	<td>{{firstname}}</td>
-	<td>{{lastname}}</td>
-	<td><button data-user-edit={{_id}}>Edit</button></td>
-	<td><button data-user-delete={{_id}}>Remove</button></td>
+	<td style='display:none;'>{{id_consultant}}</td>
+	<td>{{Prenom}}</td>
+	<td>{{Nom}}</td>
+	<td><button data-user-edit={{id_consultant}}>Edit</button></td>
+	<td><button data-user-delete={{id_consultant}}>Remove</button></td>
 </tr>`
 
 const users_list_template = `
@@ -20,7 +20,7 @@ const users_list_template = `
   </thead>
   <tbody>
   	{{#each users}}
-	${user_line_template}
+	   ${user_line_template}
 	{{/each}}
   </tbody>
 </table>`

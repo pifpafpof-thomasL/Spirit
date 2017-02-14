@@ -116,7 +116,7 @@ function edit_user(_id) {
 function load_users() {
 	fetch('consultants')
       .then(res => res.json())
-		.then(users => store.set(users))
+		.then(consultants => store.set(consultants))
 		.catch(function (error) {
 			console.log('load_users(): problem with your code? ' + error.message);
 		})
