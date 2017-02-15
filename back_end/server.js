@@ -1,6 +1,6 @@
 // server.js
 'use strict'
-
+const path = require('path');
 const express = require('express')
 const app = express()
 const db = require(`${__dirname}/lib/models/index.js`)
@@ -10,11 +10,11 @@ app.use(bodyParser.json())
 app.use(express.static('.'))
 app.use(express.static('./public'));
 
-app.use(bodyParser.urlencoded({ extended: false}))
+app.use(bodyParser.urlencoded({ extended: false }))
 
 // app.get('/', (req, res) => res.send('Welcome homepage'))
 app.get('/', function (req, res) {
-	res.sendFile(path.join(__dirname + '/index.html'));
+  res.sendFile(path.join(__dirname + '/index.html'));
 })
 
 

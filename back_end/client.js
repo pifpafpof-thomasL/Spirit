@@ -1,6 +1,6 @@
 'use strict'
 
-const inspect = require('object-inspect')
+// const inspect = require('object-inspect')
 let events = require('pubsub')
 const Store = require('./lib/store')
 let store = new Store(events)
