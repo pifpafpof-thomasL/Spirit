@@ -18,9 +18,9 @@
 
     <header>
         <div class="container">
-            <a href="#" data-activates="nav-mobile" class="button-collapse top-nav waves-effect waves-light circle hide-on-large-only"><i class="material-icons">menu</i></a>
+            <a href="#" class="top-nav waves-effect waves-light circle hide-on-large-only"></a>
         </div>
-        <ul id="nav-mobile" class="side-nav fixed">
+        <ul id="nav-mobile" class="side-nav fixed grey darken-4">
             <li class="logo">
                 <a href="#" id="logo-container" class="brand-logo">
                     <object data="images/Altran.svg" type="images/svg+xml" id="front-page-logo">
@@ -63,28 +63,49 @@
             <div class="container">
                 <div class="row">
                     <div class="col s9">
-                        <li class="search">
+                        <li class="search white-text">
                             <div class="search-wrapper">
-                                <input id="search" class="">
+                                <input id="search" class="white-text">
                                 <div class="search-results"></div>
                             </div>
                         </li>
                     </div>
                     <div class="col s3 valign-wrapper">
-                        <i class="material-icons right valign">search</i>
+                        <i class="material-icons right valign white-text">search</i>
                     </div>
                 </div>
             </div>
             <li class="no-padding">
                 <ul class="collapsible collapsible-accordion">
-                    <li class="bold"><a class="collapsible-header  waves-effect waves-teal"><i class="material-icons">group</i>Consultant</a>
+                    <li class="bold"><a class="collapsible-header waves-effect waves-teal white-text"><i class="material-icons white-text">group</i>Consultant</a>
                         <div class="collapsible-body">
                             <ul class="collapsible collapsible-accordion">
-                                <li class="bold"><a class="collapsible-header  waves-effect waves-teal center">A - E</a>
+                                <li class="bold"><a class="collapsible-header waves-effect waves-teal center grey darken-4 white-text">A - E</a>
                                     <div class="collapsible-body" style="display: block">
                                         <ul class="collapsible" data-collapsible="accordion">
                                             <li class="light-blue darken-1 white-text">
-                                                <div class="collapsible-header"><a href="toto.html"><i class="material-icons">perm_identity</i>Toto</a></div>
+                                                <div class="collapsible-header">
+                                                    <a data-activates="slide-out" class="button-collapse"><i class="material-icons right">menu</i><i class="material-icons">perm_identity</i>Toto</a>
+                                                    <ul id="slide-out" class="side-nav">
+                                                        <li>
+                                                            <div class="userView">
+                                                                <div class="background">
+                                                                    <img src="images/office.jpg">
+                                                                </div>
+                                                                <a href="#!user"><img class="circle" src="images/yuna.jpg"></a>
+                                                                <a href="#!name"><span class="white-text name">John Doe</span></a>
+                                                                <a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a>
+                                                            </div>
+                                                        </li>
+                                                        <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
+                                                        <li><a href="#!">Second Link</a></li>
+                                                        <li>
+                                                            <div class="divider"></div>
+                                                        </li>
+                                                        <li><a class="subheader">Subheader</a></li>
+                                                        <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+                                                    </ul>
+                                                </div>
                                             </li>
                                             <li class="light-blue darken-1 white-text">
                                                 <div class="collapsible-header"><i class="material-icons">perm_identity</i>First</div>
@@ -102,7 +123,7 @@
                         </div>
                         <div class="collapsible-body">
                             <ul class="collapsible collapsible-accordion">
-                                <li class="bold"><a class="collapsible-header  waves-effect waves-teal center">F - J</a>
+                                <li class="bold"><a class="collapsible-header waves-effect waves-teal center grey darken-4 white-text">F - J</a>
                                     <div class="collapsible-body" style="display: block">
                                         <ul class="collapsible" data-collapsible="accordion">
                                             <li class="light-blue darken-1 white-text">
@@ -124,7 +145,7 @@
                         </div>
                         <div class="collapsible-body">
                             <ul class="collapsible collapsible-accordion">
-                                <li class="bold"><a class="collapsible-header  waves-effect waves-teal center">K - O</a>
+                                <li class="bold"><a class="collapsible-header  waves-effect waves-teal center grey darken-4 white-text">K - O</a>
                                     <div class="collapsible-body" style="display: block">
                                         <ul class="collapsible" data-collapsible="accordion">
                                             <li class="light-blue darken-1 white-text">
@@ -146,7 +167,7 @@
                         </div>
                         <div class="collapsible-body">
                             <ul class="collapsible collapsible-accordion">
-                                <li class="bold"><a class="collapsible-header  waves-effect waves-teal center">P - T</a>
+                                <li class="bold"><a class="collapsible-header  waves-effect waves-teal center grey darken-4 white-text">P - T</a>
                                     <div class="collapsible-body" style="display: block">
                                         <ul class="collapsible" data-collapsible="accordion">
                                             <li class="light-blue darken-1 white-text">
@@ -166,7 +187,7 @@
 
                                     <div class="collapsible-body">
                                         <ul class="collapsible collapsible-accordion">
-                                            <li class="bold"><a class="collapsible-header  waves-effect waves-teal center">U - Z</a>
+                                            <li class="bold"><a class="collapsible-header  waves-effect waves-teal center grey darken-4 white-text">U - Z</a>
                                                 <div class="collapsible-body" style="display: block">
                                                     <ul class="collapsible" data-collapsible="accordion">
                                                         <li class="light-blue darken-1 white-text">
@@ -192,10 +213,10 @@
                     </li>
                     <li class="no-padding">
                         <ul class="collapsible collapsible-accordion">
-                            <li class="bold"><a class="collapsible-header  waves-effect waves-teal"><i class="material-icons">folder</i>Projet</a>
+                            <li class="bold"><a class="collapsible-header waves-effect waves-teal white-text"><i class="material-icons white-text">folder</i>Projet</a>
                                 <div class="collapsible-body">
                                     <ul class="collapsible collapsible-accordion">
-                                        <li class="bold"><a class="collapsible-header  waves-effect waves-teal center">A - E</a>
+                                        <li class="bold"><a class="collapsible-header  waves-effect waves-teal center grey darken-4 white-text">A - E</a>
                                             <div class="collapsible-body" style="display: block">
                                                 <ul class="collapsible" data-collapsible="accordion">
                                                     <li class="light-blue darken-1 white-text">
@@ -217,7 +238,7 @@
                                 </div>
                                 <div class="collapsible-body">
                                     <ul class="collapsible collapsible-accordion">
-                                        <li class="bold"><a class="collapsible-header  waves-effect waves-teal center">F - J</a>
+                                        <li class="bold"><a class="collapsible-header  waves-effect waves-teal center grey darken-4 white-text">F - J</a>
                                             <div class="collapsible-body" style="display: block">
                                                 <ul class="collapsible" data-collapsible="accordion">
                                                     <li class="light-blue darken-1 white-text">
@@ -239,7 +260,7 @@
                                 </div>
                                 <div class="collapsible-body">
                                     <ul class="collapsible collapsible-accordion">
-                                        <li class="bold"><a class="collapsible-header  waves-effect waves-teal center">K - O</a>
+                                        <li class="bold"><a class="collapsible-header  waves-effect waves-teal center grey darken-4 white-text">K - O</a>
                                             <div class="collapsible-body" style="display: block">
                                                 <ul class="collapsible" data-collapsible="accordion">
                                                     <li class="light-blue darken-1 white-text">
@@ -261,7 +282,7 @@
                                 </div>
                                 <div class="collapsible-body">
                                     <ul class="collapsible collapsible-accordion">
-                                        <li class="bold"><a class="collapsible-header  waves-effect waves-teal center">P - T</a>
+                                        <li class="bold"><a class="collapsible-header  waves-effect waves-teal center grey darken-4 white-text">P - T</a>
                                             <div class="collapsible-body" style="display: block">
                                                 <ul class="collapsible" data-collapsible="accordion">
                                                     <li class="light-blue darken-1 white-text">
@@ -280,7 +301,7 @@
                                             </div>
                                             <div class="collapsible-body">
                                                 <ul class="collapsible collapsible-accordion">
-                                                    <li class="bold"><a class="collapsible-header  waves-effect waves-teal center">U - Z</a>
+                                                    <li class="bold"><a class="collapsible-header  waves-effect waves-teal center grey darken-4 white-text">U - Z</a>
                                                         <div class="collapsible-body" style="display: block">
                                                             <ul class="collapsible" data-collapsible="accordion">
                                                                 <li class="light-blue darken-1 white-text">
@@ -308,7 +329,23 @@
                     </li>
                 </ul>
         </ul>
+
     </header>
+
+    <section id="front-page-navbar">
+        <div class="navbar-fixed">
+            <nav>
+                <div class="nav-wrapper grey darken-4">
+                    <ul class="right hide-on-med-and-down">
+                        <li><a href="test.html"><i class="material-icons">clear_all</i></a></li>
+                        <li><a href="#"><i class="material-icons">date_range</i></a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+
+
+    </section>
 
 
     <!--  Scripts -->
