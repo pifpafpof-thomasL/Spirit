@@ -1,8 +1,18 @@
 (function($) {
         $(function() {
-
-                $('.button-collapse').sideNav();
-                $('.parallax').parallax();
+                $(".button-collapse").sideNav();
+                // Show sideNav
+                $('.button-collapse').sideNav('show');
+                // Hide sideNav
+                $('.button-collapse').sideNav('hide');
+                // Destroy sideNav
+                $('.button-collapse').sideNav('destroy');
+                $('.button-collapse').sideNav({
+                    menuWidth: 300, // Default is 300
+                    edge: 'right', // Choose the horizontal origin
+                    closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+                    draggable: true // Choose whether you can drag to open on touch screens
+                });
                 $('.collapsible').collapsible({
                         popout: true,
                         onOpen: function(el) { alert('Open'); }, // Callback for Collapsible open
@@ -13,11 +23,6 @@
                 onOpen: function(el) { alert('Open'); }, // Callback for Collapsible open
                 onClose: function(el) { alert('Closed'); } // Callback for Collapsible close
             }); $('ul.tabs').tabs('select_tab', 'tab_id');
-
-            $('.scroll-pane').jScrollPane(); $('.scroll-pane-arrows').jScrollPane({
-                showArrows: true,
-                horizontalGutter: 10
-            });
 
             $('.dropdown-button').dropdown({
                 inDuration: 300,
