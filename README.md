@@ -45,6 +45,45 @@ Cookie-Parser
 
 ___
 
+## Guidelines
+
+#### Guidelines fichiers
+
+Dans chaque fichier JS : `'use strict'`
+
+Fichier server.js :
+
+`app.use('/collections', Model(db)) ` => collection au pluriel + Model avec une majuscule
+
+`const Model = require ('./routes/fichier-route')` => Model avec majuscule + fichier_route en minuscules au singulier
+
+#### Guidelines Git
+
+La branche commune est **master**
+
+###### créer une nouvelle branche de travail à partir de master
+
++ `git checkout master` => On se positionne sur la branche
+
++ `git pull` => Pour se mettre à jour par rapport au dépôt
+
++ `git checkout -b nom_new_branch` => Création d'une nouvelle branche pour travailler sur une fonctionnalité
+
++ `git push -u origin nom_new_branch` => Mettre la branche sur le dépôt cognac (distant)
+
+
+###### Pour validation
+
++ Demander à un collègue de vérifier le fonctionnement du code de la branche
+
++ Si OK, mettre à jour **nom_new_branch** avec **master** (et non pas le contraire) : 
+  - `git checkout master && git pull` (mettre à jour master au cas ou des push ont été fait depuis)
+  - `git checkout nom_new_branch && git merge master` (intégrer master à votre vranche de travail)
+
++ Si merge OK : demande de validation fonctionnelle (à Jérôme)
+
++ Si validé : merge request vers **master**
+
 ## Visualisation Du Front-End
 
 Installer Browser Sync
@@ -56,3 +95,19 @@ Dans le treminal : positionnez vous sur le dossier front_end et entrez la comman
 > `browser-sync start --server --files "*.html, css/*.css, js/*.js"`
 
 Cela va ouvrir une fenêtre dans votre navigateur et tous les changements que vous effectuez sur les fichers html, css et js en temps réel
+
+## Product Backlog
+
+v1 app standalone
+
+- CRUD consultants et projets
+- fenetre liste consultants 
+  - trier et filtrer dynamiquement
+  - infos principales consultant
+  - boutons ajout, edit, del
+- idem projets
+- affecter consultant à un projet
+  - ergonomie (période d'affectation, portion de temps affecté - ex 10% 2j / sem)
+  - jours ouvrés
+  - possibilité de rajouter des jours sabbatiques
+- vision sur le plan de charge
