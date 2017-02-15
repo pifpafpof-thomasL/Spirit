@@ -32,7 +32,9 @@ module.exports = (db, viewpath = 'imputation') => {
       db.Imputation.create(req.body)
       .then( imputation => {
          const id_imputation = imputation.dataValues.id_Imputation
-         res.status(201).append('Location', '/' + id_imputation).send('created ok')
+         res.status(201)
+            .append('Location', `${req.baseUrl}/` + id_imputation)
+            .send('created ok')
       })
       .catch( e => { res.status(404).send('error') })
    })

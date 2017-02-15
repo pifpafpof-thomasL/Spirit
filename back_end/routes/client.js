@@ -25,7 +25,7 @@ module.exports = (db, viewpath = 'clients') => {
   app.post('/', (req, res) => {
     db.Client.create(req.body)
       .then(client =>
-        res.location(`/clients/${client.dataValues.id_Client}`).sendStatus(201))
+        res.location(`${req.baseUrl}/${client.dataValues.id_Client}`).sendStatus(201))
       .catch(e => res.status(404).send('error'))
   })
 

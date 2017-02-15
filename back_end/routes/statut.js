@@ -24,7 +24,7 @@ module.exports = (db, viewpath = 'Statut') => {
 	// create new statut
 	app.post('/', (req, res) => {
 		db.Statut.create(req.body)
-		.then(statut => res.location(`/statuts/${statut.dataValues.id_Statut}`).sendStatus(201))
+		.then(statut => res.location(`${req.baseUrl}/${statut.dataValues.id_Statut}`).sendStatus(201))
 		.catch(error => res.sendStatus(404))
 	})
 

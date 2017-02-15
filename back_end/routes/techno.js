@@ -25,7 +25,7 @@ module.exports = (db, viewpath = 'technos') => {
     app.post('/', (req, res) => {
         db.Techno.create(req.body)
             .then(techno =>
-                res.location(`/technos/${techno.dataValues.id_Techno}`).sendStatus(201))
+                res.location(`${req.baseUrl}/${techno.dataValues.id_Techno}`).sendStatus(201))
             .catch(e => res.status(404).send('error'))
     })
 

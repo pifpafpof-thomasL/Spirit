@@ -27,7 +27,7 @@ module.exports = (db, viewpath = 'Tache') => {
   // create a new task
   app.post('/', (req, res) => {
     db.Tache.create(req.body)
-    .then(task => res.location(`/tache/${task.dataValues.id_Tache}`).sendStatus(201))
+    .then(task => res.location(`${req.baseUrl}/${task.dataValues.id_Tache}`).sendStatus(201))
     .catch(error => res.sendStatus(404))
   })
 
