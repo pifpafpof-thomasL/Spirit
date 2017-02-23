@@ -92,7 +92,7 @@ Installer Browser Sync
 
 Dans le treminal : positionnez vous sur le dossier front_end et entrez la commande suivante
 
-> `browser-sync start --server --files "*.html, css/*.css, js/*.js"`
+> `browser-sync start --server --files "*.html, css/*.css, js/*.js, src/css/*.css, src/js/*.js"`
 
 Cela va ouvrir une fenêtre dans votre navigateur et tous les changements que vous effectuez sur les fichers html, css et js en temps réel
 
