@@ -2,10 +2,12 @@
 
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('Projet', {
-    id_projet: {
+    // at least one field called "id" is required by admin-on-rest
+    id: {  // "id"" will be used by server to JSON to client  
       type: DataTypes.INTEGER(10),
       allowNull: false,
       primaryKey: true,
+      field: "id_projet", // name of "id" in the databse
       autoIncrement: true
     },
     Nom: {

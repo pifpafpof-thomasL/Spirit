@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "cognac",
+    "password": "cognac",
+    "database": "cognac",
+    "host": "localhost",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "cognac",
+    "password": "cognac31",
+    "database": "database_test",
+    "host": "51.254.119.45",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "cognac",
+    "password": "cognac31",
+    "database": "database_production",
+    "host": "51.254.119.45",
+    "dialect": "mysql"
+  }
+}

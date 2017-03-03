@@ -6,11 +6,32 @@ const app = express()
 const db = require(`${__dirname}/lib/models/index.js`)
 const bodyParser = require('body-parser')
 
-app.use(bodyParser.json())
+app.use(bodyParser.json());
 app.use(express.static('.'))
-app.use(express.static('./public'));
+app.use(express.static('./public'))
 
 app.use(bodyParser.urlencoded({ extended: false }))
+
+// Required for admin-on-rest react front-end
+const REACT_FRONT = "http://localhost:3001"  // origine de requetes clientes d'un autre server http
+// const to be displayed when the server is started
+app.use(function (request, response, next) {
+  response.header("Access-Control-Allow-Origin", REACT_FRONT);
+  response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  response.header("Access-Control-Expose-Headers", "X-Total-Count");
+  next();
+});
+
+
+// dès qu'une requête de type OPTIONS est envoyé
+// le serveur répond qu'il accepte les méthodes GET, PUT, POST, DELETE et OPTIONS
+// Required for admin-on-rest  react front-end, 
+// otherwise server answer OPTIONS as if it was a GET, and so sends all JSON objetcs to the client
+// admin-on-rest 1st ask for OPTIONS and then perform a GET
+app.options('/*', function (request, response, next) {
+  response.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE, OPTIONS");
+  response.send(204);
+});
 
 // app.get('/', (req, res) => res.send('Welcome homepage'))
 app.get('/', function (req, res) {
@@ -44,11 +65,12 @@ app.use('/imputations', Imputation(db))
 // TODO : il manque les assocations sous lib/modeles
 // http://docs.sequelizejs.com/en/v3/docs/associations/
 //
-
 // rajouter les routes ici
 
-const server = app.listen(3000, function () {
+const server = app.listen(4000, function () {
   var host = server.address().address
   var port = server.address().port
   console.log('Example app listening at http://%s:%s', host, port)
+  console.log("Access-Control-Allow-Origin: (react admin-on-rest server) ", REACT_FRONT)
+
 })

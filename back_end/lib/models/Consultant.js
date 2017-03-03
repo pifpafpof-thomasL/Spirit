@@ -1,12 +1,14 @@
 /* jshint indent: 2 */
 
-module.exports = function(sequelize, DataTypes) {
+module.exports = function (sequelize, DataTypes) {
   return sequelize.define('Consultant', {
-    id_consultant: {
+    // at least one field called "id" is required by admin-on-rest (to JSON to client)
+    id: {  // "id"" will be used by server to JSON to client 
       type: DataTypes.INTEGER(10),
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
+      field: 'id_consultant', // name in the db
       references: {
         model: "Consultant",
         key: "id_consultant"
@@ -57,8 +59,8 @@ module.exports = function(sequelize, DataTypes) {
       }
     }
   }, {
-    tableName: 'Consultant',
-    timestamps: false,
-    timestamps: false
-  });
+      tableName: 'Consultant',
+      timestamps: false,
+      timestamps: false
+    });
 };
