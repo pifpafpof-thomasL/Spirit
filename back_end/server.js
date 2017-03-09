@@ -13,12 +13,12 @@ app.use(express.static('./public'))
 app.use(bodyParser.urlencoded({ extended: false }))
 
 // Required for admin-on-rest react front-end
-const REACT_FRONT = "http://localhost:3001"  // origine de requetes clientes d'un autre server http
+const REACT_FRONT = "*"; // "http://localhost:3000"  // origine de requetes clientes d'un autre server http
 // const to be displayed when the server is started
 app.use(function (request, response, next) {
   response.header("Access-Control-Allow-Origin", REACT_FRONT);
   response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  response.header("Access-Control-Expose-Headers", "X-Total-Count");
+  response.header("Access-Control-Expose-Headers", "X-Total-Count, Content-Range");
   next();
 });
 

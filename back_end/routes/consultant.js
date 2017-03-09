@@ -7,10 +7,16 @@ module.exports = (db, viewpath = 'Consultant') => {
   // Get/list all Consultant
   app.get('/', (req, res) => {
     db.Consultant.findAndCountAll({}).
-      then((Consultants) => res
-        .set("X-Total-Count", Consultants.count)
-        .status(200)
-        .json(Consultants.rows))
+      then((Consultants) => {
+        let myRange = "items 0-" + Consultants.count + "/" + Consultants.count
+        console.log("Setting Content-Range = " + myRange)
+        res
+          .set("X-Total-Count", Consultants.count)
+          //.set("Content-Range", "bytes 0-1023/2048") // works fine but incorrect 
+          .set("Content-Range", myRange) 
+          .status(200)
+          .json(Consultants.rows)
+      })
   })
 
   // Read single Consultant
