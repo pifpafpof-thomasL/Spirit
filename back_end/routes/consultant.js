@@ -4,7 +4,22 @@ const inspect = require('util').inspect
 module.exports = (db, viewpath = 'Consultant') => {
 
   //REST for Consultants
-  // Get/list all Consultant
+  app.get('/', (req, res, next) => {
+    if (req.query.q) {
+      db.Consultant.findAndCountAll({
+        where: { $or: [
+          {Nom: {$like: `%${req.query.q}%`}},
+          {Prenom: {$like: `%${req.query.q}%`}}
+        ]
+        }
+      })
+      .then((consultant) => res.set("X-Total-Count", consultant.count).status(200).json(consultant.rows))
+    } else {
+      next()
+    }
+  })
+
+  // Get/list all Consultants
   app.get('/', (req, res) => {
     db.Consultant.findAndCountAll({}).
       then((Consultants) => {
