@@ -16,7 +16,6 @@ import Dashboard from './Dashboard';
 //import myApiRestClient from './restClient'; // either this one
 //import myJsonRestClient from './myjsonClient'; // or this one
 
-
 /*class App extends Component {
   render() {
     return (
