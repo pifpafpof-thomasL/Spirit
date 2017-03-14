@@ -3,14 +3,23 @@ import React from 'react';
 // to manage List views
 import { List, Datagrid, DateField, TextField, EmailField } from 'admin-on-rest/lib/mui';
 
+// to filter
+import { Filter } from 'admin-on-rest/lib/mui'
+
 // to manage Edit form
 import { Edit, EditButton, DisabledInput, LongTextInput, 
     ReferenceInput, SelectInput, SimpleForm,
     TextInput, DateInput, NumberInput
 } from 'admin-on-rest/lib/mui';
 
+const ConsultantFilter = (props) => (
+    <Filter {...props}>
+        <TextInput label="Search" source="q" alwaysOn />
+    </Filter>
+)
+
 export const ConsultantList = (props) => (
-    <List title="Consultants" {...props}>
+    <List title="Consultants" {...props} filters={<ConsultantFilter />}>
         <Datagrid>
             {/*//<TextField source="id" />*/}
             <TextField source="Prenom" />

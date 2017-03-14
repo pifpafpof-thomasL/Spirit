@@ -30,7 +30,7 @@ const MyLayout = ({ isLoading, children, route, title }) => {
     return (
         <MuiThemeProvider>
             <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-                <AppBar title={Title} iconElementRight={RightElement} />
+                <AppBar title={title} iconElementRight={RightElement} isLoading={false} />
                 <div className="body" style={{ display: 'flex', flex: '1', backgroundColor: '#edecec' }}>
                     <div style={{ flex: 1 }}>{children}</div>
                     <MyMenu />
