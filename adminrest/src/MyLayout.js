@@ -1,33 +1,38 @@
 //import React from 'react';
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import { Notification, AppBar, Sidebar } from 'admin-on-rest/lib/mui';
+import { Notification, AppBar } from 'admin-on-rest/lib/mui';
 import Paper from 'material-ui/Paper';
 import { List, ListItem } from 'material-ui/List';
 import { Link } from 'react-router';
 // import Dashboard from './Dashboard';
 
-
 // added by thomas
+import DashIcon from 'material-ui/svg-icons/action/dashboard';
 import PostIcon from 'material-ui/svg-icons/action/book';
+import UserIcon from 'material-ui/svg-icons/social/group';
+import EventIcon from 'material-ui/svg-icons/action/event';
+
 import CircularProgress from 'material-ui/CircularProgress';
 
-// added by thomas for more mayout customizing
-import { connect } from 'react-redux';
+// added by thomas for a left sidebar 
+//import React, { Component, PropTypes } from 'react';
+// import { connect } from 'react-redux';
 //import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 //import CircularProgress from 'material-ui/CircularProgress';
-import injectTapEventPlugin from 'react-tap-event-plugin';
+// import injectTapEventPlugin from 'react-tap-event-plugin';
 // import {  Sidebar } from 'admin-on-rest/lib/mui';
-import { setSidebarVisibility as setSidebarVisibilityAction } from 'admin-on-rest';
+// import { setSidebarVisibility as setSidebarVisibilityAction } from 'admin-on-rest';
 
 
 // in src/MyLayout
 const MyMenu = () => (
     <Paper style={{ flex: '0 0 8em', order: -1 }}>
         <List>
-            <ListItem containerElement={<Link to={`/timelines`} />} primaryText="Timeline" leftIcon={<PostIcon />} />
+            <ListItem containerElement={<Link to={`/timelines`} />} primaryText="Timeline" leftIcon={<EventIcon />} />
             <ListItem containerElement={<Link to={`/projets`} />} primaryText="Projets" leftIcon={<PostIcon />} />
-            <ListItem containerElement={<Link to={`/consultants`}  />} primaryText="Consultants" leftIcon={<PostIcon />} />
+            <ListItem containerElement={<Link to={`/consultants`}  />} primaryText="Consultants" leftIcon={<UserIcon />} />
+            <ListItem containerElement={<Link to={`/affectations`}  />} primaryText="Affectations" leftIcon={<DashIcon />} />
         </List>
     </Paper>
 );
@@ -46,7 +51,7 @@ const styles = {
     },
     content: {
         flex: 1,
-        padding: '2em',
+        padding: '1em',
     },
     loader: {
         position: 'absolute',
@@ -63,12 +68,12 @@ const MyLayout = ({ isLoading, children, route, title }) => {
 
     return (
         <MuiThemeProvider>
-            <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+            {/*<div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>*/}
+            <div style={styles.main} >
                 <AppBar title={title} isLoading={false} iconElementRight={RightElement} />
                 <div className="body" style={{ display: 'flex', flex: '1', backgroundColor: '#edecec' }}>
                     {/*<div style={{ flex: 1 }}>{children}</div>*/}
                     <div style={styles.content}>{children}</div>
-                    
                     <MyMenu />
                 </div>
                 <Notification />

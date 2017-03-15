@@ -2,13 +2,13 @@ import React from 'react';
 
 import { connect } from 'react-redux';
 // to manage List views
-import { List, Datagrid, DateField, TextField, EmailField } from 'admin-on-rest/lib/mui';
+import { List, Datagrid, DateField, TextField } from 'admin-on-rest/lib/mui';
 
 // to filter
 import { Filter } from 'admin-on-rest/lib/mui'
 
 // to manage Edit form
-import { Edit, EditButton, DisabledInput, LongTextInput, 
+import { Edit, EditButton, DisabledInput, 
     ReferenceInput, SelectInput, SimpleForm,
     TextInput, DateInput, NumberInput
 } from 'admin-on-rest/lib/mui';
