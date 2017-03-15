@@ -71,14 +71,9 @@ module.exports = (db, viewpath = 'Consultant') => {
   // Update example http://localhost:3000/Consultant/7?Nom=mimi
   app.put('/:id', (req, res) => {
 
-    consolde.log("Consultant::put: Pour faire comme le serveur REST JSONPlaceholder pour admin-on-rest")
-    consolde.log("Consultant::put: il faudrait renvoyer dans le corps de réponse un JSON avec id:1, prenom,..etc..")
-    consolde.log("Consultant::put: et peut êtrr d'autres choses comme le serveur JSONPlaceholder")
-    consolde.log("Consultant::put: sinon l'IHM est en attente pour arrêter le sablier sur le save")
-    consolde.log("Consultant::put: ca n'empêche pas la sauvegarde en BDD")
     db.Consultant.findById(req.params.id)
       .then(Consultant => Consultant.update(req.body))
-      .then(done => res.status(204).send('update ok'))
+      .then(done => res.status(200).json({id: `${req.params.id}`}))
       .catch(e => res.status(404).send('update error'))
   });
 
