@@ -9,20 +9,33 @@ const inspect = require('util').inspect
 
 module.exports = (db, viewpath = 'projets') => {
 
+    // Middleware de recherche par mots clés
+    app.get('/', (req, res, next) => {
+        if (req.query.q) {
+        db.Projet.findAndCountAll({
+            where: { 
+                $or: [
+                {Nom: {$like: `%${req.query.q}%`}},
+                {DateDebut: {$like: `%${req.query.q}%`}},
+                {DateFin: {$like: `%${req.query.q}%`}},
+                ]
+            }
+        })
+        .then((projet) => res.set("X-Total-Count", projet.count).status(200).json(projet.rows))
+        } else {
+        next()
+        }
+    })
+
+
     app.get('/', (req, res) => {
             db.Projet.findAndCountAll({})
                 .then((projets) => res
                 .set("X-Total-Count", projets.count)
                 .status(200)
                 .json(projets.rows))
-                .catch(e => res.status(404).send('db access error'))   
+                .catch(e => res.status(404).send('db access error'))
     })
-
-    // app.options('/', (req, res) => {
-    //     db.Projet.findAll({})
-    //         .then((projets) => res.status(200).json(projets))
-    //         .catch(e => res.status(404).send('db access error'))
-    // })
 
     app.get('/:id', (req, res) => {
         db.Projet.find({ where: { id_projet: req.params.id } })
@@ -54,7 +67,7 @@ module.exports = (db, viewpath = 'projets') => {
     app.put('/:id', (req, res) => {
         db.Projet.findById(req.params.id)
             .then(projet => projet.update(req.body))
-            .then(() => res.status(204).send('update ok'))
+            .then(() => res.status(200).json({id: `${req.params.id}`}))
             .catch(e => res.status(404).send())
     })
 

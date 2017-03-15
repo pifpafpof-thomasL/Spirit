@@ -40,7 +40,7 @@ module.exports = (db, viewpath = 'Statut') => {
 	app.put('/:id', (req, res) => {
 		db.Statut.findById(req.params.id)
 		.then(statut => statut.update(req.body))
-		.then(done => res.sendStatus(204))
+		.then(done => res.status(200).json({id: `${req.params.id}`}))
 		.catch(error => res.sendStatus(404))
 	})
 

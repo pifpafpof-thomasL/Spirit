@@ -42,7 +42,7 @@ module.exports = (db, viewpath = 'imputation') => {
    app.put('/:id', (req, res) => {
       db.Imputation.findById(req.params.id)
       .then( (imputation) => imputation.update(req.body) )
-      .then( done => res.status(204).send('update ok') )
+      .then( done => res.status(200).json({id: `${req.params.id}`}))
       .catch( e => res.status(404).send('error') )
    })
 

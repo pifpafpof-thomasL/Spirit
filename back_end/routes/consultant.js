@@ -1,16 +1,21 @@
+'use strict'
+
 const express = require('express')
 const app = express()
 const inspect = require('util').inspect
 module.exports = (db, viewpath = 'Consultant') => {
 
   //REST for Consultants
+
+  // Middleware de recherche par mots clés
   app.get('/', (req, res, next) => {
     if (req.query.q) {
       db.Consultant.findAndCountAll({
-        where: { $or: [
+        where: { 
+          $or: [
           {Nom: {$like: `%${req.query.q}%`}},
           {Prenom: {$like: `%${req.query.q}%`}}
-        ]
+          ]
         }
       })
       .then((consultant) => res.set("X-Total-Count", consultant.count).status(200).json(consultant.rows))
@@ -32,6 +37,7 @@ module.exports = (db, viewpath = 'Consultant') => {
           .status(200)
           .json(Consultants.rows)
       })
+      .catch(e => res.sendStatus(404))
   })
 
   // Read single Consultant

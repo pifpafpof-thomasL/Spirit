@@ -45,7 +45,7 @@ module.exports = (db, viewpath = 'clients') => {
     db.Client.findById(req.params.id)
       .then(client =>
         client.update(req.body))
-      .then(done => res.sendStatus(204))
+      .then(done => res.status(200).json({id: `${req.params.id}`}))
       .catch(error => res.sendStatus(404))
   })
 

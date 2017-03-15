@@ -46,7 +46,7 @@ module.exports = (db, viewpath = 'Affectation') => {
 	app.put('/:id', (req, res) => {
 		db.Affectation.findById(req.params.id)
 		.then(affectation => affectation.update(req.body))
-		.then(done => res.sendStatus(204))
+		.then(done => res.status(200).json({id: `${req.params.id}`}))
 		.catch(error => res.sendStatus(404))
 	})
 

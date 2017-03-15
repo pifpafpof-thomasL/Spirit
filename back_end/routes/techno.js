@@ -41,7 +41,7 @@ module.exports = (db, viewpath = 'technos') => {
     app.put('/:id', (req, res) => {
         db.Techno.findById(req.params.id)
             .then(techno => techno.update(req.body))
-            .then(done => res.sendStatus(204))
+            .then(done => res.status(200).json({id: `${req.params.id}`}))
             .catch(error => res.sendStatus(404))
     })
 
