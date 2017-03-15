@@ -9,7 +9,7 @@ import { jsonServerRestClient, Admin, Resource } from 'admin-on-rest';
 import { Delete } from 'admin-on-rest/lib/mui';
 // import { PostList, PostEdit, PostCreate } from './posts';
 // import { UserList } from './users';
-import { ProjetList } from './projets';
+import { ProjectList, ProjectEdit } from './projets';
 import { ConsultantList, ConsultantEdit } from './consultants';
 import Dashboard from './Dashboard';
 
@@ -44,7 +44,7 @@ const App = () => (
       {/*<Admin  dashboard={Dashboard} restClient={myJsonRestClient('http://localhost:4000')}>*/}
       {/*<Resource name="posts" list={PostList} edit={PostEdit} create={PostCreate} icon={PostIcon} />
     <Resource name="users" list={UserList} icon={UserIcon} />*/}
-      <Resource name="projets" list={ProjetList} icon={PostIcon} />
+      <Resource name="projets" list={ProjectList} edit={ProjectEdit} icon={PostIcon} />
       <Resource name="consultants" list={ConsultantList} edit={ConsultantEdit} remove={Delete} icon={UserIcon} />
   </Admin>
     );
