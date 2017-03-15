@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { connect } from 'react-redux';
 // to manage List views
 import { List, Datagrid, DateField, TextField, EmailField } from 'admin-on-rest/lib/mui';
 
@@ -34,7 +35,7 @@ const ConsultantTitle = ({ record }) => {
     return <span>Consultant {record ? `"${record.Prenom} ${record.Nom}"` : ''}</span>;
 };
 
-export const ConsultantEdit = (props) => (
+export const ConsultantEdit = connect(state => ({projets: state.admin.projets ? state.admin.projets.data : null}))((props) => (
     <Edit title={<ConsultantTitle />} {...props}>
         <SimpleForm>
             <DisabledInput source="id" />
@@ -52,8 +53,9 @@ export const ConsultantEdit = (props) => (
             </ReferenceInput>*/}
             {/*<TextField source="id_Statut" />*/}
         </SimpleForm>
+        
     </Edit>
-);
+));
 /*
 export const ConsultantCreate = (props) => (
     <Create {...props}>

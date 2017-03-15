@@ -1,6 +1,8 @@
 import React from 'react';
 
 import Timeline from 'react-visjs-timeline'
+import { Card, CardHeader, CardText } from 'material-ui/Card';
+import logo from './logo.svg';
 
 // http://visjs.org/docs/timeline/#Configuration_Options
 const options = {
@@ -24,11 +26,20 @@ const options = {
 class TimeLinePage extends React.Component {
     render() {
         return (
-            <div className="timeLine-page">
+    <Card style={{ margin: '1em' }}>
+        <CardHeader title="Welcome to the project timeline">
+            <img src={logo} className="App-logo" alt="logo" /> 
+        </CardHeader>
+        <CardText>Lorem ipsum sic dolor amet...</CardText>
+        <Timeline options={options} />
+
+    </Card>
+
+            /*<div className="timeLine-page">
                 <h2>____  timeLine page !!! yaya !!! _____</h2>
                 <Timeline options={options} />
 
-            </div>
+            </div>*/
         )
     }
 };
