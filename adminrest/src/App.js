@@ -1,9 +1,12 @@
 import React from 'react';
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 
 import PostIcon from 'material-ui/svg-icons/action/book';
 import UserIcon from 'material-ui/svg-icons/social/group';
+import UserIcon from 'material-ui/svg-icons/social/group';
+https://www.materialui.co/icon/perm-data-setting
+<i class="material-icons">perm_data_setting</i>
 
 import { jsonServerRestClient, Admin, Resource } from 'admin-on-rest';
 import { Delete } from 'admin-on-rest/lib/mui';
@@ -37,17 +40,18 @@ import MyLayout from './MyLayout';
 
 
 const App = () => (
-  <Admin  dashboard={Dashboard} appLayout={MyLayout}
+  <Admin dashboard={Dashboard} appLayout={MyLayout} title={"Cognac"}
     customRoutes={customRoutes}
     restClient={jsonServerRestClient('http://localhost:4000')}>
 
-      {/*<Admin  dashboard={Dashboard} restClient={myJsonRestClient('http://localhost:4000')}>*/}
-      {/*<Resource name="posts" list={PostList} edit={PostEdit} create={PostCreate} icon={PostIcon} />
-    <Resource name="users" list={UserList} icon={UserIcon} />*/}
-      <Resource name="projets" list={ProjetList} icon={PostIcon} />
-      <Resource name="consultants" list={ConsultantList} edit={ConsultantEdit} remove={Delete} icon={UserIcon} />
+    {/*// at leat one Resource is required but will be hidden by MyLayout*/}
+    <Resource name="projets" list={ProjetList} icon={PostIcon} />
+    <Resource name="consultants" list={ConsultantList} edit={ConsultantEdit} remove={Delete} icon={UserIcon} />
+    <Resource name="affectations" list={AffectationList} edit={AffectationListEdit} remove={Delete} icon={UserIcon} />
+
+
   </Admin>
-    );
+);
 
 
 export default App;

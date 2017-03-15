@@ -10,36 +10,45 @@ module.exports = (db, viewpath = 'Affectation') => {
 
 	// list all affectations
 	app.get('/', (req, res) => {
-		db.Affectation.findAll()
-		.then(affectation => res.status(200).json(affectation))
-		.catch(error => res.sendStatus(404))
+
+		db.Affectation.findAndCountAll({}).
+			then((Affectation) => {
+				let myRange = "items 0-" + Affectation.count + "/" + Affectation.count
+				console.log("Setting Content-Range = " + myRange)
+				res
+					.set("X-Total-Count", Affectation.count)
+					//.set("Content-Range", "bytes 0-1023/2048") // works fine but incorrect 
+					.set("Content-Range", myRange)
+					.status(200)
+					.json(Affectation.rows)
+			})
 	})
 
 	// find one affectation
 	app.get('/:id', (req, res) => {
 		db.Affectation.findById(req.params.id)
-		.then(affectation => affectation ?
-			res.status(200).json(affectation) :
-			res.sendStatus(404))
-		.catch(error => res.send('Random text to signal error'))
+			.then(affectation => affectation ?
+				res.status(200).json(affectation) :
+				res.sendStatus(404))
+			.catch(error => res.send('Random text to signal error'))
 	})
 
 
 	// create a new affectation
 	app.post('/', (req, res) => {
 		db.Affectation.create(req.body)
-		.then(affectation => 
-			res.location(`${req.baseUrl}/${affectation.dataValues.id_Affectation}`)
-			.sendStatus(201))
-		.catch(error => res.sendStatus(404))
+			.then(affectation =>
+				res.location(`${req.baseUrl}/${affectation.dataValues.id_Affectation}`)
+					.sendStatus(201))
+			.catch(error => res.sendStatus(404))
 	})
 
 	// delete an affectation
 	app.delete('/:id', (req, res) => {
 		db.Affectation.findById(req.params.id)
-		.then(affectation => affectation.destroy())
-		.then(done => res.sendStatus(204))
-		.catch(error => res.sendStatus(404))
+			.then(affectation => affectation.destroy())
+			.then(done => res.sendStatus(204))
+			.catch(error => res.sendStatus(404))
 	})
 
 	// update an affectation

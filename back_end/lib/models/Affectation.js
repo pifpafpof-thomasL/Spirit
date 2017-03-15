@@ -1,12 +1,17 @@
 /* jshint indent: 2 */
 
-module.exports = function(sequelize, DataTypes) {
+module.exports = function (sequelize, DataTypes) {
   return sequelize.define('Affectation', {
-    id_Affectation: {
+    id: {
       type: DataTypes.INTEGER(10),
       allowNull: false,
       primaryKey: true,
-      autoIncrement: true
+      autoIncrement: true,
+      field: 'id_Affectation', // name in the db
+      references: {
+        model: "Affectation",
+        key: "id_Affectation"
+      }
     },
     id_Consultant: {
       type: DataTypes.INTEGER(10),
@@ -37,7 +42,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: true
     }
   }, {
-    tableName: 'Affectation',
-    timestamps: false
-  });
+      tableName: 'Affectation',
+      timestamps: false
+    });
 };
