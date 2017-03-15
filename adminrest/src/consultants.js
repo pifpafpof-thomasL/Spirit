@@ -1,7 +1,7 @@
 import React from 'react';
 
 // to manage List views
-import { List, Datagrid, DateField, TextField, EmailField } from 'admin-on-rest/lib/mui';
+import { List, Datagrid, DateField, TextField, EmailField, ReferenceField, ReferenceManyField, SingleFieldList, ChipField } from 'admin-on-rest/lib/mui';
 
 // to filter
 import { Filter } from 'admin-on-rest/lib/mui'
@@ -11,6 +11,7 @@ import { Edit, EditButton, DisabledInput, LongTextInput,
     ReferenceInput, SelectInput, SimpleForm,
     TextInput, DateInput, NumberInput
 } from 'admin-on-rest/lib/mui';
+
 
 const ConsultantFilter = (props) => (
     <Filter {...props}>
@@ -31,7 +32,14 @@ export const ConsultantList = (props) => (
             <DateField source="DateNaissance" />
             {/*<DateField source="DateEntreeEntreprise" />*/}
             <TextField source="CoutJournalier" />
-            {/*<TextField source="id_Statut" />*/}
+            {/*<ReferenceManyField label="Maitrises" reference="maitrises">
+                <SingleFieldList>
+                    <ChipField source="Niveau" />
+                </SingleFieldList>
+            </ReferenceManyField>*/}
+            {/*<ReferenceField label="Maitrise" source="Maitrise" reference="consultants">
+                <TextField source="Niveau" />
+            </ReferenceField>*/}
             <EditButton />   
                {/* to display an Edit button */}
         </Datagrid>

@@ -1,7 +1,7 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('Techno', {
+  let Techno = sequelize.define('Techno', {
     id_Techno: {
       type: DataTypes.INTEGER(10),
       allowNull: false,
@@ -14,6 +14,13 @@ module.exports = function(sequelize, DataTypes) {
     }
   }, {
     tableName: 'Techno',
-    timestamps: false
+    timestamps: false,
+    classMethods: {
+      associate: function(models) {
+        // associations can be defined here
+        Techno.hasMany(models.Maitrise, {foreignKey: 'id_Techno'})
+      }
+    }
   });
+  return Techno
 };
