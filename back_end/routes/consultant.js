@@ -3,6 +3,9 @@
 const express = require('express')
 const app = express()
 const inspect = require('util').inspect
+
+let Maitrise = require('../lib/models').Maitrise
+
 module.exports = (db, viewpath = 'Consultant') => {
 
   //REST for Consultants
@@ -26,18 +29,20 @@ module.exports = (db, viewpath = 'Consultant') => {
 
   // Get/list all Consultants
   app.get('/', (req, res) => {
-    db.Consultant.findAndCountAll({}).
+    db.Consultant.findAndCountAll({
+      include: Maitrise
+    }).
       then((Consultants) => {
-        let myRange = "items 0-" + Consultants.count + "/" + Consultants.count
-        console.log("Setting Content-Range = " + myRange)
+        // let myRange = "items 0-" + Consultants.count + "/" + Consultants.count
+        // console.log("Setting Content-Range = " + myRange)
         res
           .set("X-Total-Count", Consultants.count)
           //.set("Content-Range", "bytes 0-1023/2048") // works fine but incorrect 
-          .set("Content-Range", myRange) 
+          // .set("Content-Range", myRange) 
           .status(200)
           .json(Consultants.rows)
       })
-      .catch(e => res.sendStatus(404))
+      .catch(e => console.log(e))
   })
 
   // Read single Consultant

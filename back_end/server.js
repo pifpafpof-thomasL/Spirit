@@ -30,7 +30,7 @@ app.use(function (request, response, next) {
 // admin-on-rest 1st ask for OPTIONS and then perform a GET
 app.options('/*', function (request, response, next) {
   response.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE, OPTIONS");
-  response.send(204);
+  response.sendStatus(204);
 });
 
 // app.get('/', (req, res) => res.send('Welcome homepage'))
@@ -47,6 +47,7 @@ const Techno = require('./routes/techno')
 const Statut = require('./routes/statut')
 const Affectation = require('./routes/affectation')
 const Imputation = require('./routes/imputation')
+const Maitrise = require('./routes/maitrise')
 
 // routes in module
 
@@ -58,6 +59,7 @@ app.use('/technos', Techno(db))
 app.use('/statuts', Statut(db))
 app.use('/affectations', Affectation(db))
 app.use('/imputations', Imputation(db))
+app.use('/maitrises', Maitrise(db))
 
 
 // routes in module
