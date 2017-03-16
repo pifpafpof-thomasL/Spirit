@@ -8,6 +8,27 @@ const app = express()
 
 module.exports = (db, viewpath = 'Affectation') => {
 
+	// Middleware de recherche par mots clés
+	app.get('/', (req, res, next) => {
+		if (req.query.q) {
+			db.Affectation.findAndCountAll({
+				where: {
+					$or: [
+						{ id_Consultant: { $like: `%${req.query.q}%` } },
+						{ Pourcentage: { $like: `%${req.query.q}%` } },
+						{ id_Projet: { $like: `%${req.query.q}%` } }
+					]
+				}
+			})
+				.then((Affectation) => res
+					.set("X-Total-Count", Affectation.count)
+					.status(200)
+					.json(Affectation.rows))
+		} else {
+			next()
+		}
+	})
+
 	// list all affectations
 	app.get('/', (req, res) => {
 
@@ -37,10 +58,14 @@ module.exports = (db, viewpath = 'Affectation') => {
 	// create a new affectation
 	app.post('/', (req, res) => {
 		db.Affectation.create(req.body)
-			.then(affectation =>
+			.then(affectation => {
 				res.location(`${req.baseUrl}/${affectation.dataValues.id_Affectation}`)
-					.sendStatus(201))
+					.status(201)
+					.json({ id: `${affectation.dataValues.id_Affectation}` })
+				console.log("POST create for id " + affectation.dataValues.id_Affectation)
+			}) // json id required for Adminonrest
 			.catch(error => res.sendStatus(404))
+			)
 	})
 
 	// delete an affectation
@@ -54,9 +79,9 @@ module.exports = (db, viewpath = 'Affectation') => {
 	// update an affectation
 	app.put('/:id', (req, res) => {
 		db.Affectation.findById(req.params.id)
-		.then(affectation => affectation.update(req.body))
-		.then(done => res.status(200).json({id: `${req.params.id}`}))
-		.catch(error => res.sendStatus(404))
+			.then(affectation => affectation.update(req.body))
+			.then(done => res.status(200).json({ id: `${req.params.id}` }))
+			.catch(error => res.sendStatus(404))
 	})
 
 	return app

@@ -12,7 +12,7 @@ import { Delete } from 'admin-on-rest/lib/mui';
 // import { UserList } from './users';
 import { ProjetList } from './projets';
 import { ConsultantList, ConsultantEdit } from './consultants';
-import { AffectationList, AffectationEdit } from './affectations';
+import { AffectationList, AffectationEdit, AffectationCreate } from './affectations';
 import Dashboard from './Dashboard';
 
 //import myApiRestClient from './restClient'; // either this one
@@ -50,7 +50,7 @@ const App = () => (
     {/*// at leat one Resource is required but will be hidden by MyLayout*/}
     <Resource name="projets" list={ProjetList} icon={PostIcon} />
     <Resource name="consultants" list={ConsultantList} edit={ConsultantEdit} remove={Delete} icon={UserIcon} />
-    <Resource name="affectations" list={AffectationList}  edit={AffectationEdit} remove={Delete} icon={DashIcon} />
+    <Resource name="affectations" list={AffectationList} create={AffectationCreate}  edit={AffectationEdit} remove={Delete} icon={DashIcon} />
   </Admin>
 );
 

@@ -30,7 +30,7 @@ app.use(function (request, response, next) {
 // admin-on-rest 1st ask for OPTIONS and then perform a GET
 app.options('/*', function (request, response, next) {
   response.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE, OPTIONS");
-  response.send(204);
+  response.sendStatus(204);
 });
 
 // app.get('/', (req, res) => res.send('Welcome homepage'))
