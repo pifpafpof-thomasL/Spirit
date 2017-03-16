@@ -1,23 +1,51 @@
 import React from 'react';
-import { Filter, List, Datagrid, DateField, TextField, TextInput } from 'admin-on-rest/lib/mui';
+import { List, Datagrid, DateField, TextField, Edit, EditButton, SimpleForm, DisabledInput } from 'admin-on-rest/lib/mui';
 
-const ProjectFilter = (props) => (
+// filters
+import {
+    Filter, TextInput, ReferenceInput, ReferenceManyField, ChipField, SingleFieldList,
+    SelectInput, DateInput, NumberInput
+} from 'admin-on-rest/lib/mui'
+
+const ProjetFilter = (props) => (
     <Filter {...props}>
         <TextInput label="Search" source="q" alwaysOn />
     </Filter>
 )
 
 export const ProjetList = (props) => (
-    <List title="Projets" {...props} filters={<ProjectFilter />}>
+    <List title="Projets" {...props} filters={<ProjetFilter />}>
         <Datagrid>
             {/*<TextField source="id_projet" />*/}
             <TextField source="Nom" />
-            <TextField source="DateDebut" />
+            <TextField source="DateDebut" type="date" />
             <TextField source="DateFin" />
-            <TextField source="IdentifiantMinos" />
-            <TextField source="IdentifiantHermes" />
-            <TextField source="Adm" />
+            {/*<TextField source="IdentifiantMinos" />*/}
+            {/*<TextField source="IdentifiantHermes" />*/}
+            {/*<TextField source="Adm" />*/}
+            <ReferenceManyField label="Consultants" reference="consultants">
+                <SingleFieldList>
+                    <ChipField label="Projet" source="Nom" />
+                </SingleFieldList>
+            </ReferenceManyField>
+
             <TextField source="id_Client" />
+            <EditButton />
         </Datagrid>
     </List>
+);
+
+export const ProjetEdit = (props) => (
+    <Edit {...props}>
+        <SimpleForm>
+            <DisabledInput source="id" />
+            <TextInput source="Nom" />
+            <DateInput source="DateDebut" />
+            <DateInput source="DateFin" />
+            <TextInput source="IdentifiantMinos" />
+            <TextInput source="IdentifiantHermes" />
+            <TextInput source="Adm" />
+            <TextInput source="id_Client" />
+        </SimpleForm>
+    </Edit>
 );

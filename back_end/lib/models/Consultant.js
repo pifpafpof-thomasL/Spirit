@@ -1,7 +1,7 @@
 /* jshint indent: 2 */
 
 module.exports = function (sequelize, DataTypes) {
-  return sequelize.define('Consultant', {
+  let Consultant = sequelize.define('Consultant', {
     // at least one field called "id" is required by admin-on-rest (to JSON to client)
     id: {  // "id"" will be used by server to JSON to client 
       type: DataTypes.INTEGER(10),
@@ -61,6 +61,12 @@ module.exports = function (sequelize, DataTypes) {
   }, {
       tableName: 'Consultant',
       timestamps: false,
-      timestamps: false
+      classMethods: {
+        associate: function(models) {
+          // associations can be defined here
+          Consultant.hasMany(models.Maitrise, {foreignKey: 'id_Consultant'})
+        }
+      }
     });
+    return Consultant
 };

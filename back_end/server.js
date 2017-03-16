@@ -47,6 +47,7 @@ const Techno = require('./routes/techno')
 const Statut = require('./routes/statut')
 const Affectation = require('./routes/affectation')
 const Imputation = require('./routes/imputation')
+const Maitrise = require('./routes/maitrise')
 
 // routes in module
 
@@ -58,6 +59,7 @@ app.use('/technos', Techno(db))
 app.use('/statuts', Statut(db))
 app.use('/affectations', Affectation(db))
 app.use('/imputations', Imputation(db))
+app.use('/maitrises', Maitrise(db))
 
 
 // routes in module

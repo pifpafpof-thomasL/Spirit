@@ -10,7 +10,7 @@ import { jsonServerRestClient, Admin, Resource } from 'admin-on-rest';
 import { Delete } from 'admin-on-rest/lib/mui';
 // import { PostList, PostEdit, PostCreate } from './posts';
 // import { UserList } from './users';
-import { ProjetList } from './projets';
+import { ProjetList, ProjetEdit } from './projets';
 import { ConsultantList, ConsultantEdit } from './consultants';
 import { AffectationList, AffectationEdit, AffectationCreate } from './affectations';
 import Dashboard from './Dashboard';
@@ -39,19 +39,26 @@ import MyLayout from './MyLayout';
 
 
 const App = () => (
-  // <Admin dashboard={Dashboard} 
-
+  // {/*<Admin  dashboard={Dashboard} restClient={myJsonRestClient('http://localhost:4000')}>*/ }
+/*
+  < Admin dashboard= { Dashboard } appLayout= { MyLayout } title= { "Cognac"}
+customRoutes = { customRoutes }
+restClient = { jsonServerRestClient('http://localhost:4000')} >
+*/
   <Admin dashboard={Dashboard}
     title={"Cognac"}
     appLayout={MyLayout}
     customRoutes={customRoutes}
     restClient={jsonServerRestClient('http://localhost:4000')}>
 
-    {/*// at leat one Resource is required but will be hidden by MyLayout*/}
-    <Resource name="projets" list={ProjetList} icon={PostIcon} />
-    <Resource name="consultants" list={ConsultantList} edit={ConsultantEdit} remove={Delete} icon={UserIcon} />
-    <Resource name="affectations" list={AffectationList} create={AffectationCreate}  edit={AffectationEdit} remove={Delete} icon={DashIcon} />
-  </Admin>
+  {/*// at least one Resource is required but will be hidden by MyLayout*/ }
+  < Resource name= "projets" list= {ProjetList} edit={ProjetEdit} icon= { PostIcon } />
+    <Resource name="consultants" list={ConsultantList} 
+      edit={ConsultantEdit} remove={Delete} icon={UserIcon} />
+    <Resource name="affectations" 
+      list={AffectationList} create={AffectationCreate} 
+      edit={AffectationEdit} remove={Delete} icon={DashIcon} />
+  </Admin >
 );
 
 

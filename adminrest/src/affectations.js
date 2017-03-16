@@ -20,7 +20,7 @@ export const AffectationCreate = (props) => (
             <ReferenceInput label="Consultant" source="id_Consultant" reference="consultants" allowEmpty>
                 <SelectInput optionText="Nom" />
             </ReferenceInput>
-            {/*<TextInput source="id_Projet" />*/}
+            {/*// requires a GET_MANY_REFERENCE	GET http://my.api.url/consultants?filter={projet_id:345}*/}
             <ReferenceInput label="Projet" source="id_Projet" reference="projets" allowEmpty>
                 <SelectInput optionText="Nom" />
             </ReferenceInput>

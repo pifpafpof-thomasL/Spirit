@@ -3,15 +3,19 @@ import React from 'react';
 import { connect } from 'react-redux';
 // to manage List views
 import { List, Datagrid, DateField, TextField } from 'admin-on-rest/lib/mui';
+//import { List, Datagrid, DateField, TextField, EmailField, ReferenceField, ReferenceManyField, SingleFieldList, ChipField } from 'admin-on-rest/lib/mui';
 
 // to filter
 import { Filter } from 'admin-on-rest/lib/mui'
 
 // to manage Edit form
-import { Edit, EditButton, DisabledInput, 
+import {
+    Edit, EditButton, DisabledInput,
     ReferenceInput, SelectInput, SimpleForm,
-    TextInput, DateInput, NumberInput
+    TextInput, DateInput, NumberInput,
+    ReferenceManyField, ChipField, SingleFieldList
 } from 'admin-on-rest/lib/mui';
+
 
 const ConsultantFilter = (props) => (
     <Filter {...props}>
@@ -32,9 +36,23 @@ export const ConsultantList = (props) => (
             <DateField source="DateNaissance" />
             {/*<DateField source="DateEntreeEntreprise" />*/}
             <TextField source="CoutJournalier" />
-            {/*<TextField source="id_Statut" />*/}
-            <EditButton />   
-               {/* to display an Edit button */}
+            {/*<ReferenceManyField label="Maitrises" reference="maitrises">
+                <SingleFieldList>
+                    <ChipField source="Niveau" />
+                </SingleFieldList>
+            </ReferenceManyField>*/}
+
+            {/*// requires a GET_MANY_REFERENCE	GET http://my.api.url/projets?filter={consultant_id:345}*/}
+            {/*<ReferenceManyField label="Projets" reference="projets">
+                <SingleFieldList>
+                    <ChipField label="Projet" source="Projet" />
+                </SingleFieldList>
+            </ReferenceManyField>*/}
+            {/*<ReferenceField label="Maitrise" source="Maitrise" reference="consultants">
+                <TextField source="Niveau" />
+            </ReferenceField>*/}
+            <EditButton />
+            {/* to display an Edit button */}
         </Datagrid>
     </List>
 );
@@ -44,7 +62,7 @@ const ConsultantTitle = ({ record }) => {
     return <span>Consultant {record ? `"${record.Prenom} ${record.Nom}"` : ''}</span>;
 };
 
-export const ConsultantEdit = connect(state => ({projets: state.admin.projets ? state.admin.projets.data : null}))((props) => (
+export const ConsultantEdit = connect(state => ({ projets: state.admin.projets ? state.admin.projets.data : null }))((props) => (
     <Edit title={<ConsultantTitle />} {...props}>
         <SimpleForm>
             <DisabledInput source="id" />
@@ -62,7 +80,7 @@ export const ConsultantEdit = connect(state => ({projets: state.admin.projets ? 
             </ReferenceInput>*/}
             {/*<TextField source="id_Statut" />*/}
         </SimpleForm>
-        
+
     </Edit>
 ));
 /*

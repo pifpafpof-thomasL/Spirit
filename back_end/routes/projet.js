@@ -16,8 +16,8 @@ module.exports = (db, viewpath = 'projets') => {
             where: { 
                 $or: [
                 {Nom: {$like: `%${req.query.q}%`}},
-                {DateDebut: {$like: `%${req.query.q}%`}},
-                {DateFin: {$like: `%${req.query.q}%`}},
+                {DateDebut: {$gte: `%${req.query.q}%`}},
+                {DateFin: {$gte: `%${req.query.q}%`}},
                 ]
             }
         })
