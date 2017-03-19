@@ -59,13 +59,12 @@ module.exports = (db, viewpath = 'Affectation') => {
 	app.post('/', (req, res) => {
 		db.Affectation.create(req.body)
 			.then(affectation => {
-				res.location(`${req.baseUrl}/${affectation.dataValues.id_Affectation}`)
+				const id = affectation.dataValues.id
+				res.location(`${req.baseUrl}/${id}`)
 					.status(201)
-					.json({ id: `${affectation.dataValues.id_Affectation}` })
-				console.log("POST create for id " + affectation.dataValues.id_Affectation)
-			}) // json id required for Adminonrest
+					.json({ id: `${id}` })  // json/id is required for Adminonrest HMI update
+			})
 			.catch(error => res.sendStatus(404))
-			)
 	})
 
 	// delete an affectation

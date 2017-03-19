@@ -71,6 +71,11 @@ module.exports = (db, viewpath = 'Consultant') => {
         let loc = `${req.baseUrl}/${Consultant.id_consultant}`
         res.location(loc)
         res.status(201).send(Consultant)  // no need to send Consultant but could be useful for debug
+
+        // added by thomas please consider instead of 
+        //.send(Consultant) 
+        // rather	.json({ id: `${idxxx}` })  // json/id is required for Adminonrest HMI update
+
       })
       .catch(e => {
         let err = "Error: Unable to create Consultant in DB (key is already in DB?)\n"

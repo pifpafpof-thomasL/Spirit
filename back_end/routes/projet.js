@@ -56,7 +56,7 @@ module.exports = (db, viewpath = 'projets') => {
         db.Projet.create(req.body)
             .then(projet => {
                 const id_projet = projet.dataValues.id_projet
-                res.append('Location', `${req.baseUrl}/` + id_projet).status(201).send('created ok')
+                res.append('Location', `${req.baseUrl}/` + id_projet).status(201).send('Projet créé!')
             })
             .catch(e => {
                 console.log(inspect(e.message))
