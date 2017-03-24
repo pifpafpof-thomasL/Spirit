@@ -3,9 +3,9 @@ import { Route } from 'react-router';
 // import Foo from './Foo';
 import TimeLinePage from './timeLinePage';
 
+
 export default () => (
     <Route>
-        <Route path="/timelines" component={TimeLinePage} />
-        {/*<Route path="/bar" component={Bar} />*/}
+        <Route path="/timelines" component={TimeLinePage}/>
     </Route>
 );

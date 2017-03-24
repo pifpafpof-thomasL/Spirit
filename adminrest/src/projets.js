@@ -16,18 +16,18 @@ const ProjetFilter = (props) => (
 export const ProjetList = (props) => (
     <List title="Projets" {...props} filters={<ProjetFilter />}>
         <Datagrid>
-            {/*<TextField source="id_projet" />*/}
+            <TextField source="id" />
             <TextField source="Nom" />
-            <TextField source="DateDebut" type="date" />
-            <TextField source="DateFin" />
+            <DateField source="DateDebut" />
+            <DateField source="DateFin" />
             {/*<TextField source="IdentifiantMinos" />*/}
             {/*<TextField source="IdentifiantHermes" />*/}
             {/*<TextField source="Adm" />*/}
-            <ReferenceManyField label="Consultants" reference="consultants">
-                <SingleFieldList>
-                    <ChipField label="Projet" source="Nom" />
-                </SingleFieldList>
-            </ReferenceManyField>
+            {/*<ReferenceManyField label="Consultants" reference="consultants">*/}
+            {/*<SingleFieldList>*/}
+            {/*<ChipField label="Projet" source="Nom" />*/}
+            {/*</SingleFieldList>*/}
+            {/*</ReferenceManyField>*/}
 
             <TextField source="id_Client" />
             <EditButton />
@@ -35,8 +35,12 @@ export const ProjetList = (props) => (
     </List>
 );
 
+const ProjetTitle = ({ record }) => {
+    return <span>Projet {record ? `"${record.Nom}"` : ''}</span>;
+};
+
 export const ProjetEdit = (props) => (
-    <Edit {...props}>
+    <Edit title={<ProjetTitle />} {...props}>
         <SimpleForm>
             <DisabledInput source="id" />
             <TextInput source="Nom" />

@@ -12,7 +12,6 @@ class Search extends React.Component {
     }
 
 
-
     // this component is destroyed
     componentWillUnmount = () => {
         // dispatch(search)

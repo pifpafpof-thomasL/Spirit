@@ -15,8 +15,6 @@ import { ConsultantList, ConsultantEdit } from './consultants';
 import { AffectationList, AffectationEdit, AffectationCreate } from './affectations';
 import Dashboard from './Dashboard';
 
-//import myApiRestClient from './restClient'; // either this one
-//import myJsonRestClient from './myjsonClient'; // or this one
 import customRoutes from './customRoutes';
 
 
@@ -37,27 +35,31 @@ import customRoutes from './customRoutes';
 }*/
 import MyLayout from './MyLayout';
 
+// import TimeLinePage from './timeLinePage';
+
+
 
 const App = () => (
   // {/*<Admin  dashboard={Dashboard} restClient={myJsonRestClient('http://localhost:4000')}>*/ }
-/*
-  < Admin dashboard= { Dashboard } appLayout= { MyLayout } title= { "Cognac"}
-customRoutes = { customRoutes }
-restClient = { jsonServerRestClient('http://localhost:4000')} >
-*/
+  /*
+    < Admin dashboard= { Dashboard } appLayout= { MyLayout } title= { "Cognac"}
+  customRoutes = { customRoutes }
+  restClient = { jsonServerRestClient('http://localhost:4000')} >
+  */
   <Admin dashboard={Dashboard}
     title={"Cognac"}
     appLayout={MyLayout}
     customRoutes={customRoutes}
     restClient={jsonServerRestClient('http://localhost:4000')}>
 
-  {/*// at least one Resource is required but will be hidden by MyLayout*/ }
-  < Resource name= "projets" list= {ProjetList} edit={ProjetEdit} icon= { PostIcon } />
-    <Resource name="consultants" list={ConsultantList} 
+    {/*// at least one Resource is required but will be hidden by MyLayout*/}
+    < Resource name="projets" list={ProjetList} edit={ProjetEdit} icon={PostIcon} />
+    <Resource name="consultants" list={ConsultantList}
       edit={ConsultantEdit} remove={Delete} icon={UserIcon} />
-    <Resource name="affectations" 
-      list={AffectationList} create={AffectationCreate} 
+    <Resource name="affectations"
+      list={AffectationList} create={AffectationCreate}
       edit={AffectationEdit} remove={Delete} icon={DashIcon} />
+
   </Admin >
 );
 

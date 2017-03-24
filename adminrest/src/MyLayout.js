@@ -29,8 +29,8 @@ import CircularProgress from 'material-ui/CircularProgress';
 const MyMenu = () => (
     <Paper style={{ flex: '0 0 8em', order: -1 }}>
         <List>
-            <ListItem containerElement={<Link to={`/timelines`} />} primaryText="Timeline" leftIcon={<EventIcon />} />
-            <ListItem containerElement={<Link to={`/projets`} />} primaryText="Projets" leftIcon={<PostIcon />} />
+            <ListItem containerElement={<Link to={`/timelines`} />} primaryText="Timeline Proj." leftIcon={<EventIcon />} />
+            <ListItem containerElement={<Link to={`/projets`} />} primaryText="Admin Proj." leftIcon={<PostIcon />} />
             <ListItem containerElement={<Link to={`/consultants`}  />} primaryText="Consultants" leftIcon={<UserIcon />} />
             <ListItem containerElement={<Link to={`/affectations`}  />} primaryText="Affectations" leftIcon={<DashIcon />} />
         </List>

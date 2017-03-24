@@ -67,7 +67,8 @@ module.exports = (db, viewpath = 'projets') => {
     app.put('/:id', (req, res) => {
         db.Projet.findById(req.params.id)
             .then(projet => projet.update(req.body))
-            .then(() => res.status(200).json({id: `${req.params.id}`}))
+//            .then(() => res.status(200).json({id: `${req.params.id}`}))
+            .then(() => res.status(200).json(req.body)) // body nécessaire pour maj store côté front
             .catch(e => res.status(404).send())
     })
 
