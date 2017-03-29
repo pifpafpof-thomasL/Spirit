@@ -1,6 +1,6 @@
-# Cognac Altran Projet
+# Cognac Projet
 
-Outil/Applicatif de gestion de projet et de consultants
+Web Application de gestion de projets et de consultants
 
 ![Timeline projets](https://git.altran.com/aso/COGNAC/raw/V1/screenshot/timeline.png)
 
