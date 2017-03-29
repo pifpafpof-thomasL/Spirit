@@ -15,10 +15,10 @@ Dans un autre terminal démarrer le front:
 
 ## Liste des Api 
 
-[Starter React adminonrest](https://github.com/marmelab/admin-on-rest/blob/master/docs/Tutorial.md)
-[React calendar timeline](https://www.npmjs.com/package/react-calendar-timeline)
++ [Starter React adminonrest](https://github.com/marmelab/admin-on-rest/blob/master/docs/Tutorial.md)
++ [React calendar timeline](https://www.npmjs.com/package/react-calendar-timeline)
 
-Le start Adminonrest s'appuie sur CSS/front js Material Design:
+Le starter front Adminonrest s'appuie sur CSS/front js Material Design:
 [Material Design](https://material.io/guidelines/)
 
 ## Librairies Cognac Project
@@ -31,9 +31,9 @@ Reactjs → Redux
 
 ### Back-End
 Nodesjs
+Express
 Sequelize
 MySql
-Body-Parser
 ___
 
 ## Guidelines
@@ -75,15 +75,10 @@ La branche commune est **master**
 
 + Si validé : merge request vers **master**
 
-## Visualisation Du Front-End
-Démarrer le back:
-> cd backend; npm start
-Dans un autre terminal démarrer le front:
-> cd adminonrest; npm start
 
 ## Product Backlog
 
-v1 app standalone
+v1 -
 
 - CRUD consultants et projets
 - fenetre liste consultants 
@@ -94,7 +89,7 @@ v1 app standalone
 - affecter consultant à un projet
 - afficher les projets sous forme d'une timeline, pouvoir modifier la date et le projet depuis cette timeline
 
-V2
+V2 - à venir
   - ergonomie (période d'affectation, portion de temps affecté - ex 10% 2j / sem)
   - jours ouvrés
   - possibilité de rajouter des jours sabbatiques
