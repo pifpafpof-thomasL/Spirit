@@ -1,22 +1,25 @@
 # Cognac Altran Projet
 
-Outil/Applicatif de gestion de projet et de personnel
+Outil/Applicatif de gestion de projet et de consultants
 
+![Timeline projets](https://git.altran.com/aso/COGNAC/raw/V1/screenshot/timeline.png)
+
+## Installer les dépendances:
++ `npm install` dans un dossier contenant un `package.json`
+
+## Démarrage du front et back:
++ `cd backend; npm start`
+
+Dans un autre terminal démarrer le front:
++ `cd adminonrest; npm start`
 
 ## Liste des Api 
 
-[List Charts Google](https://developers.google.com/chart/interactive/docs/)
+[Starter React adminonrest](https://github.com/marmelab/admin-on-rest/blob/master/docs/Tutorial.md)
+[React calendar timeline](https://www.npmjs.com/package/react-calendar-timeline)
 
-[Api Google Calendar](https://developers.google.com/google-apps/calendar/)
-
-[Api Gantt Charts](https://developers.google.com/chart/interactive/docs/gallery/ganttchart)
-
-[Api Calendar Charts](https://developers.google.com/chart/interactive/docs/gallery/calendar)
-
-
-## Exemple de Dashboard
-
-[Material Design Lite Dashboard Template](https://getmdl.io/templates/dashboard/index.html)
+Le start Adminonrest s'appuie sur CSS/front js Material Design:
+[Material Design](https://material.io/guidelines/)
 
 ## Librairies Cognac Project
 
@@ -24,25 +27,13 @@ Outil/Applicatif de gestion de projet et de personnel
 Material Design : MaterializeCSS
 
 ### Front-End
-Reactjs → Redux ?
-
-API Google Calendar ?
-
-Fullcalendar + jquery + moment ?
+Reactjs → Redux
 
 ### Back-End
 Nodesjs
-
-Express → Express session
-
 Sequelize
-
 MySql
-
 Body-Parser
-
-Cookie-Parser
-
 ___
 
 ## Guidelines
@@ -85,16 +76,10 @@ La branche commune est **master**
 + Si validé : merge request vers **master**
 
 ## Visualisation Du Front-End
-
-Installer Browser Sync
-
-> `npm install -g browser-sync`
-
-Dans le treminal : positionnez vous sur le dossier front_end et entrez la commande suivante
-
-> `browser-sync start --server --files "*.html, css/*.css, js/*.js, src/css/*.css, src/js/*.js"`
-
-Cela va ouvrir une fenêtre dans votre navigateur et tous les changements que vous effectuez sur les fichers html, css et js en temps réel
+Démarrer le back:
+> cd backend; npm start
+Dans un autre terminal démarrer le front:
+> cd adminonrest; npm start
 
 ## Product Backlog
 
@@ -107,6 +92,9 @@ v1 app standalone
   - boutons ajout, edit, del
 - idem projets
 - affecter consultant à un projet
+- afficher les projets sous forme d'une timeline, pouvoir modifier la date et le projet depuis cette timeline
+
+V2
   - ergonomie (période d'affectation, portion de temps affecté - ex 10% 2j / sem)
   - jours ouvrés
   - possibilité de rajouter des jours sabbatiques
