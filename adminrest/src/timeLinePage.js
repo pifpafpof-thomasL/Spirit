@@ -1,12 +1,17 @@
 import React from 'react';
 
 import Timeline from 'react-calendar-timeline'
+// We tried http://visjs.org/docs/timeline
+// but it is not well integrated with react, so we gave up using this lib
+
 import moment from 'moment'
 
 import { Card, CardHeader, CardText } from 'material-ui/Card';
 import logo from './logo.svg';
 
 import { connect } from 'react-redux';
+
+import { editProjet, loadProjets, updateDateProjet } from './timeLinePageActions';
 
 
 
@@ -26,61 +31,24 @@ class TimeLinePage extends React.Component {
     //     this.titems = []; // timeline items to idsplay within groups
     // }
 
-    // first time the component is mount
+    // first time the component is mounted
     componentWillMount = () => {
         const { dispatch  } = this.props;
 
-        //restClient(GET_LIST, "projets") // does not work restClient is undefined
-
-        //to be written in custom timeLineActions .js
         // will load projets in redux store (by sending a request to the server)
-        dispatch({
-
-            type: 'CRUD_GET_LIST',
-            payload: {
-                pagination: {
-                    page: 1,
-                    perPage: 10
-                },
-                sort: {
-                    field: 'id',
-                    order: 'DESC'
-                },
-                filter: {}
-            },
-            meta: {
-                resource: 'projets',
-                fetch: 'GET_LIST',
-                cancelPrevious: true
-            }
-        })
+        // so timeline get a none empty projets
+        dispatch(loadProjets())
 
     }
 
 
     onItemClick = (itemId, e) => {
         // handle click event
-//        alert("Click ! :-)") 
+        //        alert("Click ! :-)") 
         const { projets, dispatch  } = this.props;
 
         // a click will edit the project
-        dispatch({
-
-            type: '@@router/LOCATION_CHANGE',
-            payload: {
-                pathname: '/projets/' + itemId,
-                search: '',
-                hash: '',
-                state: null,
-                action: 'PUSH',
-                //key: '3b130u',
-                query: {},
-                $searchBase: {
-                    search: '',
-                    searchBase: ''
-                }
-            }
-        })
+        dispatch(editProjet(itemId))
     }
 
     onItemResize = (item, time, edge) => {
@@ -93,28 +61,29 @@ class TimeLinePage extends React.Component {
         // alert("Resize ! " + newDate + " ** on item ** " + itemId) 
 
         // request to the server to update the date
-        dispatch({
-            type: 'CRUD_UPDATE',
-            payload: {
-                id: item, //'9',
-                data: {  // body envoyé au serveur pour traitement
-                    id: item, //9,
-                    Nom: projets.data[item].Nom, // pas de chgt mais necessaire pour retour serveur
-                    DateDebut: edge === "left" ? newDate : projets.data[item].DateDebut,
-                    DateFin: edge === "right" ? newDate : projets.data[item].DateFin,
-                    IdentifiantMinos: projets.data[item].IdentifiantMinos,
-                    IdentifiantHermes: projets.data[item].IdentifiantMinos,
-                    Adm: projets.data[item].Adm,
-                    id_Client: projets.data[item].id_Client,
-                },
-                basePath: '/timelines'  //affiche timelines à la fin du traitement
-            },
-            meta: {
-                resource: 'projets',
-                fetch: 'UPDATE',
-                cancelPrevious: false
-            }
-        })
+        dispatch(updateDateProjet(item, newDate, edge, projets))
+        // dispatch({
+        //     type: 'CRUD_UPDATE',
+        //     payload: {
+        //         id: item, //'9',
+        //         data: {  // body envoyé au serveur pour traitement
+        //             id: item, //9,
+        //             Nom: projets.data[item].Nom, // pas de chgt mais necessaire pour retour serveur
+        //             DateDebut: edge === "left" ? newDate : projets.data[item].DateDebut,
+        //             DateFin: edge === "right" ? newDate : projets.data[item].DateFin,
+        //             IdentifiantMinos: projets.data[item].IdentifiantMinos,
+        //             IdentifiantHermes: projets.data[item].IdentifiantMinos,
+        //             Adm: projets.data[item].Adm,
+        //             id_Client: projets.data[item].id_Client,
+        //         },
+        //         basePath: '/timelines'  //affiche timelines à la fin du traitement
+        //     },
+        //     meta: {
+        //         resource: 'projets',
+        //         fetch: 'UPDATE',
+        //         cancelPrevious: false
+        //     }
+        // })
     }
 
 
@@ -149,8 +118,9 @@ class TimeLinePage extends React.Component {
                 title: projets.data[item].Nom,  // same as group name for a better display
                 id: projets.data[item].id, //index + 1, // +2 in case a test item on index 1 is setup
                 group: index + 1,
-                canMove: tstart_time > new Date().getTime(), // possible only if project range after today
-                canResize: true // always possible 
+                canMove: false,
+//                canMove: tstart_time > new Date().getTime(), // possible only if project range after today
+                canResize: 'both' // always possible 
                 //canResize: tend_time > new Date().getTime(),  // possible only if project end of date after today
             })
 
@@ -171,13 +141,19 @@ class TimeLinePage extends React.Component {
                     <Timeline
                         groups={this.tgroups}
                         items={this.titems}
-                        defaultTimeStart={tdefaultTimeStart.add(-1, 'month')}
-                        defaultTimeEnd={tdefaultTimeEnd.add(1, 'month')}
+                        defaultTimeStart={tdefaultTimeStart.add(-30, 'day')}
+                        defaultTimeEnd={tdefaultTimeEnd.add(30, 'day')}
                         minZoom={1000 * 60 * 60 * 24} // last digit is min zoom level in hours
                         onItemClick={this.onItemClick}
                         onItemResize={this.onItemResize}
                     />
-                </CardHeader>
+                    <CardText></CardText>
+                    <CardText>Click on a project to Edit. You can also directly modify a date
+                    by draging the right or left edge of the project 'box'.
+                    </CardText>                  
+                    <CardText>Ctrl+wheel to zoom
+                    </CardText>
+                </CardHeader >
             </Card >
         )
     }

@@ -10,14 +10,14 @@
     "username": "cognac",
     "password": "cognac31",
     "database": "database_test",
-    "host": "51.254.119.45",
+    "host": "localhost",
     "dialect": "mysql"
   },
   "production": {
     "username": "cognac",
     "password": "cognac31",
     "database": "database_production",
-    "host": "51.254.119.45",
+    "host": "localhost",
     "dialect": "mysql"
   }
 }

@@ -5,8 +5,6 @@ const app = express()
 
 const inspect = require('util').inspect
 
-//const inspect = require('util').inspect
-
 module.exports = (db, viewpath = 'projets') => {
 
     // Middleware de recherche par mots clés

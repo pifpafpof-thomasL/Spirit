@@ -1,5 +1,4 @@
 import React from 'react';
-// import logo from './logo.svg';
 import './App.css';
 
 import PostIcon from 'material-ui/svg-icons/action/book';
@@ -8,17 +7,16 @@ import DashIcon from 'material-ui/svg-icons/action/dashboard';
 
 import { jsonServerRestClient, Admin, Resource } from 'admin-on-rest';
 import { Delete } from 'admin-on-rest/lib/mui';
-// import { PostList, PostEdit, PostCreate } from './posts';
-// import { UserList } from './users';
 import { ProjetList, ProjetEdit } from './projets';
 import { ConsultantList, ConsultantEdit } from './consultants';
 import { AffectationList, AffectationEdit, AffectationCreate } from './affectations';
 import Dashboard from './Dashboard';
 
 import customRoutes from './customRoutes';
+import MyLayout from './MyLayout';
 
-
-/*class App extends Component {
+/* // original react app!
+class App extends Component {
   render() {
     return (
       <div className="App">
@@ -33,9 +31,8 @@ import customRoutes from './customRoutes';
     );
   }
 }*/
-import MyLayout from './MyLayout';
 
-// import TimeLinePage from './timeLinePage';
+
 
 
 
