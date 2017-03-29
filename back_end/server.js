@@ -33,10 +33,7 @@ app.options('/*', function (request, response, next) {
   response.sendStatus(204);
 });
 
-// app.get('/', (req, res) => res.send('Welcome homepage'))
-app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname + '/index.html'));
-})
+app.get('/', (req, res) => res.send('Welcome homepage'))
 
 
 const Consultant = require('./routes/consultant')
