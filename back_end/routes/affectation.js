@@ -1,7 +1,5 @@
 'use strict'
 
-// TODO : vérifier que id_consultant et id_projet existent !!
-// TODO : update -> only certain values?
 
 const express = require('express')
 const app = express()
