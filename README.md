@@ -1,14 +1,24 @@
 # Spirit Projet
 
-Web Application de gestion de projets et de consultants
+Maquette pour une Web Application de gestion de projets et de consultants.
+Ceci valide l'interaction entre les librairies javascript adminonrest/materialize/react/redux/timeline
 
-![Timeline projets](https://git.altran.com/aso/Spirit/raw/V1/screenshot/timeline.png)
+# Quelques copies d'écrans Projet
 
-## Installer les dépendances:
-+ `npm install` dans un dossier contenant un `package.json`
+![Timeline projets](https://github.com/pifpafpof-thomasL/Spirit/blob/master/screenshot/timeline.png)
+![Edition projet](https://github.com/pifpafpof-thomasL/Spirit/blob/master/screenshot/edition_projet.png)
+![Consultants](https://github.com/pifpafpof-thomasL/Spirit/blob/master/screenshot/Lister_consultants.png)
+![Affectations](https://github.com/pifpafpof-thomasL/Spirit/blob/master/screenshot/affectation.png)
+
+# Pour cloner ce projet depuis un repertoire de votre choix:
++ `git clone https://github.com/pifpafpof-thomasL/Spirit.git`
+
+## Installer les dépendances (une seule fois):
++ `npm install` dans le dossier backend (puis idem dans le dossier adminonrest)
 
 ## Démarrage du front et back:
 + `cd backend; npm start`
+Le serveur mysql sous-jacent est déjà operationnel sur un site externe. 
 
 Dans un autre terminal démarrer le front:
 + `cd adminonrest; npm start`
@@ -19,7 +29,28 @@ Dans un autre terminal démarrer le front:
 + [React calendar timeline](https://www.npmjs.com/package/react-calendar-timeline)
 
 Le starter front Adminonrest s'appuie sur CSS/front js Material Design:
-[Material Design](https://material.io/guidelines/)
++ [Material Design](https://material.io/guidelines/)
+
+## Product Backlog (au sens Agile)
+
+sprint v1 - version actuelle!
+
+- CRUD consultants et projets
+- fenetre liste consultants 
+  - trier et filtrer dynamiquement
+  - infos principales consultant
+  - boutons ajout, edit, del
+- idem projets
+- affecter consultant à un projet
+- afficher les projets sous forme d'une timeline, pouvoir modifier la date et le projet depuis cette timeline
+
+
+sprint V2 - à venir un jour peut etre...
+  - ergonomie (période d'affectation, portion de temps affecté - ex 10% 2j / sem)
+  - jours ouvrés
+  - possibilité de rajouter des jours sabbatiques
+- vision sur le plan de charge
+
 
 ## Librairies Spirit Project
 
@@ -48,7 +79,8 @@ Fichier server.js :
 
 `const Model = require ('./routes/fichier-route')` => Model avec majuscule + fichier_route en minuscules au singulier
 
-#### Guidelines Git
+
+#### Guidelines Git pour l'équipe de dev:
 
 La branche commune est **master**
 
@@ -76,21 +108,3 @@ La branche commune est **master**
 + Si validé : merge request vers **master**
 
 
-## Product Backlog
-
-v1 -
-
-- CRUD consultants et projets
-- fenetre liste consultants 
-  - trier et filtrer dynamiquement
-  - infos principales consultant
-  - boutons ajout, edit, del
-- idem projets
-- affecter consultant à un projet
-- afficher les projets sous forme d'une timeline, pouvoir modifier la date et le projet depuis cette timeline
-
-V2 - à venir
-  - ergonomie (période d'affectation, portion de temps affecté - ex 10% 2j / sem)
-  - jours ouvrés
-  - possibilité de rajouter des jours sabbatiques
-- vision sur le plan de charge
