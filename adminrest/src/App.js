@@ -39,12 +39,12 @@ class App extends Component {
 const App = () => (
   // {/*<Admin  dashboard={Dashboard} restClient={myJsonRestClient('http://localhost:4000')}>*/ }
   /*
-    < Admin dashboard= { Dashboard } appLayout= { MyLayout } title= { "Cognac"}
+    < Admin dashboard= { Dashboard } appLayout= { MyLayout } title= { "Spirit"}
   customRoutes = { customRoutes }
   restClient = { jsonServerRestClient('http://localhost:4000')} >
   */
   <Admin dashboard={Dashboard}
-    title={"Cognac"}
+    title={"Spirit"}
     appLayout={MyLayout}
     customRoutes={customRoutes}
     restClient={jsonServerRestClient('http://localhost:4000')}>

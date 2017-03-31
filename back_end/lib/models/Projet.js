@@ -22,18 +22,6 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.DATE,
       allowNull: true
     },
-    IdentifiantMinos: {
-      type: DataTypes.STRING,
-      allowNull: true
-    },
-    IdentifiantHermes: {
-      type: DataTypes.STRING,
-      allowNull: true
-    },
-    Adm: {
-      type: DataTypes.INTEGER(5),
-      allowNull: true
-    },
     id_Client: {
       type: DataTypes.INTEGER(10),
       allowNull: false,

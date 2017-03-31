@@ -1,8 +1,8 @@
-# Cognac Projet
+# Spirit Projet
 
 Web Application de gestion de projets et de consultants
 
-![Timeline projets](https://git.altran.com/aso/COGNAC/raw/V1/screenshot/timeline.png)
+![Timeline projets](https://git.altran.com/aso/Spirit/raw/V1/screenshot/timeline.png)
 
 ## Installer les dépendances:
 + `npm install` dans un dossier contenant un `package.json`
@@ -21,7 +21,7 @@ Dans un autre terminal démarrer le front:
 Le starter front Adminonrest s'appuie sur CSS/front js Material Design:
 [Material Design](https://material.io/guidelines/)
 
-## Librairies Cognac Project
+## Librairies Spirit Project
 
 ### Design
 Material Design : MaterializeCSS
@@ -60,7 +60,7 @@ La branche commune est **master**
 
 + `git checkout -b nom_new_branch` => Création d'une nouvelle branche pour travailler sur une fonctionnalité
 
-+ `git push -u origin nom_new_branch` => Mettre la branche sur le dépôt cognac (distant)
++ `git push -u origin nom_new_branch` => Mettre la branche sur le dépôt Spirit (distant)
 
 
 ###### Pour validation

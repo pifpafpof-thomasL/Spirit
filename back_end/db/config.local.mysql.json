@@ -1,20 +1,20 @@
 {
   "development": {
-    "username": "cognac",
-    "password": "cognac",
-    "database": "cognac",
+    "username": "Spirit",
+    "password": "Spirit",
+    "database": "Spirit",
     "host": "localhost",
     "dialect": "mysql"
   },
   "test": {
-    "username": "cognac",
+    "username": "Spirit",
     "password": "cognac31",
     "database": "database_test",
     "host": "localhost",
     "dialect": "mysql"
   },
   "production": {
-    "username": "cognac",
+    "username": "Spirit",
     "password": "cognac31",
     "database": "database_production",
     "host": "localhost",

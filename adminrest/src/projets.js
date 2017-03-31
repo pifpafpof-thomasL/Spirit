@@ -20,9 +20,6 @@ export const ProjetList = (props) => (
             <TextField source="Nom" />
             <DateField source="DateDebut" />
             <DateField source="DateFin" />
-            {/*<TextField source="IdentifiantMinos" />*/}
-            {/*<TextField source="IdentifiantHermes" />*/}
-            {/*<TextField source="Adm" />*/}
             {/*<ReferenceManyField label="Consultants" reference="consultants">*/}
             {/*<SingleFieldList>*/}
             {/*<ChipField label="Projet" source="Nom" />*/}
@@ -46,9 +43,6 @@ export const ProjetEdit = (props) => (
             <TextInput source="Nom" />
             <DateInput source="DateDebut" />
             <DateInput source="DateFin" />
-            <TextInput source="IdentifiantMinos" />
-            <TextInput source="IdentifiantHermes" />
-            <TextInput source="Adm" />
             <TextInput source="id_Client" />
         </SimpleForm>
     </Edit>

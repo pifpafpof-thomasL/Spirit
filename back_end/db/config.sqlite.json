@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": null,
+    "password": null,
+    "host": "localhost",
+    "dialect": "sqlite",
+    "storage": "mysqlite3.db"
+  },
+  "test": {
+    "username": null,
+    "password": null,
+    "host": "localhost",
+    "dialect": "sqlite",
+    "storage": "mysqlite3.db"
+  },
+  "production": {
+    "username": null,
+    "password": null,
+    "host": "localhost",
+    "dialect": "sqlite",
+    "storage": "mysqlite3.db"
+  }
+}

@@ -1,5 +1,5 @@
 {
-  "name": "cognac",
+  "name": "Spirit",
   "version": "1.0.0",
   "description": "Création d'une application de gestion de projet et de personnel.",
   "main": "server.js",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@gitlab.enseeiht.fr:cognac_altran_project/cognac.git"
+    "url": "git@gitlab.enseeiht.fr:cognac_altran_project/Spirit.git"
   },
   "author": "",
   "license": "ISC",
@@ -19,7 +19,8 @@
     "express": "^4.14.0",
     "mysql": "^2.13.0",
     "object-inspect": "^1.2.1",
-    "sequelize": "^3.30.0"
+    "sequelize": "^3.30.0",
+    "sqlite3": "^3.1.8"
   },
   "devDependencies": {
     "chai": "^3.5.0",
