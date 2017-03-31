@@ -9,8 +9,9 @@ Ceci valide l'interaction entre les librairies javascript adminonrest/materializ
 ![Edition projet](https://github.com/pifpafpof-thomasL/Spirit/blob/master/screenshot/edition_projet.png)
 ![Consultants](https://github.com/pifpafpof-thomasL/Spirit/blob/master/screenshot/Lister_consultants.png)
 ![Affectations](https://github.com/pifpafpof-thomasL/Spirit/blob/master/screenshot/affectation.png)
+A terme l'affectation des consultants se ferait directement depuis la timeline projet.
 
-# Pour cloner ce projet depuis un repertoire de votre choix:
+# Pour cloner ce projet depuis un repertoire sur votre machine:
 + `git clone https://github.com/pifpafpof-thomasL/Spirit.git`
 
 ## Installer les dépendances (une seule fois):
